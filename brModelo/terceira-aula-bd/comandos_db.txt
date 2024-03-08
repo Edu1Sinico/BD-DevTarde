@@ -18,7 +18,8 @@ CREATE TABLE PRODUTOS (
 	nome_produtos varchar(255) NOT NULL,
 	qtde_produtos INT NOT NULL,
 	valor_produtos MONEY NOT NULL,
-	validade_produtos date NOT NULL
+	validade_produtos date NOT NULL,
+	id_funcionarios int NOT NULL,
 	FOREIGN KEY id_funcionarios REFERENCES FUNCIONARIOS -- Chave estrangeira
 )
 
