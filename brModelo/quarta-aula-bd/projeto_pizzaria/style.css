@@ -35,9 +35,32 @@ nav a {
 
 .pizza-card {
     border: 1px solid #ddd;
+    display: flex;
     padding: 20px;
     margin-bottom: 20px;
     background-color: white;
+}
+
+.ul-list-pizzas{
+    width: 760px;
+    height: 300px;
+    overflow-y:scroll;
+}
+
+.pizza-list-card{
+    list-style: none;
+}
+
+.pizza-img-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+}
+
+.pizza-card-info{
+    padding-left: 5vh;
 }
 
 footer {

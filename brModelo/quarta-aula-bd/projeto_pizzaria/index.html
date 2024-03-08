@@ -5,35 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Pizzaria Delícia</title>
+    <title>Pizzaria - Controle de Pizzas</title>
 </head>
 
 <body>
     <header>
-        <h1>Pizzaria Delícia</h1>
+        <h1>Controle de Pizzas</h1>
         <nav>
             <ul>
                 <li><a href="#">Menu</a></li>
-                <li><a href="#">Sabor do Mês</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#">Controle de Pizzas</a></li>
+                <li><a href="#">Controle de Funcionários</a></li>
+                <li><a href="#">Pedidos</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="main-content">
-        <h2>Conheça nossas deliciosas pizzas</h2>
-        <div class="pizza-card">
-            <img src="margherita.jpg" alt="Pizza Margherita">
-            <h3>Margherita</h3>
-            <p>Tomate, muçarela e manjericão.</p>
-            <button onclick="addToCart('Margherita')">Adicionar ao Carrinho</button>
+        <h2>Lista de Pizzas Cadastradas</h2>
+        <ul class="ul-list-pizzas">
+            <li class="pizza-list-card">
+                <div class="pizza-card" id="pizza-card">
+                    <div class="pizza-img-info">
+                    <img src="margherita.jpg" alt="Pizza Margherita">
+                </div>
+                    <div class="pizza-card-info">
+                        <h3>Margherita</h3>
+                        <p>Tomate, muçarela e manjericão.</p>
+                        <p>Tamanho: (P, M, G)</p>
+                        <p>Preço: R$ 25,00</p>
+                        <button onclick="rmvPizza('Margherita')">Remover</button>
+                    </div>
+                </div>
+            </li>
+            <li class="pizza-list-card">
+                <div class="pizza-card" id="pizza-card">
+                    <div class="pizza-img-info">
+                    <img src="margherita.jpg" alt="Pizza Margherita">
+                </div>
+                    <div class="pizza-card-info">
+                        <h3>Peperroni</h3>
+                        <p>Queijo e Peperroni.</p>
+                        <p>Tamanho: (P, M, G)</p>
+                        <p>Preço: R$ 20,00</p>
+                        <button onclick="rmvPizza('Peperroni')">Remover</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="register-pizza-section">
+            <div class="register-pizza-div">
+                <form action="cadastrarPizzas.php" method="post">
+                    <label>Sabor da Pizza:</label><br>
+                    <input type="text" maxlength="30" placeholder="Digite o Sabor da Pizza">
+                    <br><br>
+                    <labeL>Ingredientes:</labeL><br>
+                    <input type="text" maxlength="50" placeholder="Digite os Ingredientes">
+                    <br><br>
+                </form>
+            </div>
         </div>
 
         <!-- Adicione mais pizzas conforme necessário -->
     </section>
 
     <footer>
-        <p>&copy; 2024 Pizzaria Delícia. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Pizzaria. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
