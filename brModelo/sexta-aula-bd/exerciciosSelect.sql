@@ -28,7 +28,7 @@ INSERT INTO cadFun VALUES (10, 'PAULO DA SILVA', '2', 'VENDEDOR', 1530.00, 4);
 SELECT * from cadFun;
 
 -- Exercício 7
-SELECT codefun, nome, SALARIO + 250 FROM cadFun;
+SELECT codefun, nome, SALARIO + 250 as projecao_salarial FROM cadFun;
 
 -- Exercício 8
 SELECT * FROM cadFun WHERE FUNCAO = 'ANALISTA'; 
@@ -51,6 +51,21 @@ SELECT * FROM cadFun WHERE FUNCAO = 'ANALISTA' OR FUNCAO = 'PROGRAMADOR' AND SAL
 -- Exercício 14
 SELECT * FROM cadFun WHERE FUNCAO != 'ANALISTA' AND FUNCAO != 'PROGRAMADOR';
 
-
 -- Exercício 15
 SELECT * FROM cadFun WHERE FUNCAO = 'ANALISTA' AND FUNCAO = 'PROGRAMADOR';
+
+-- Exercício extras
+SELECT codefun, nome, SALARIO * 1.25 as projecao_salarial FROM cadFun;
+
+-- Exercício 16
+SELECT * from cadFun where (FILHOS >= 2 and FILHOS <= 4) and SALARIO < 2000;
+
+-- Exercício 17 
+SELECT * FROM cadFun WHERE (FILHOS < 2 and FILHOS > 3);
+
+-- Exercício 18
+SELECT * FROM cadFun WHERE (FILHOS NOT BETWEEN 2 AND 3) AND (FILHOS != 0);
+
+-- Exercício 19
+SELECT * FROM cadFun WHERE FILHOS IN (2, 3);
+
