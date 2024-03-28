@@ -22,7 +22,7 @@ public class PizzaController {
         return "pizzaPage";
     }
     
-    @RequestMapping(value = "/lista", method = RequestMethod.GET)
+    @RequestMapping(value = "/lista", method = RequestMethod.POST)
     public ModelAndView listarPizzas() {
         ModelAndView mv = new ModelAndView("fragmentos/listaPizza");
         mv.addObject("pizza", pr.findAll());
