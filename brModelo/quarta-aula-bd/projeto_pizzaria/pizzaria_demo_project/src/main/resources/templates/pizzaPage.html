@@ -4,74 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" th:href="@{style.css}">
     <title>Pizzaria - Controle de Pizzas</title>
 </head>
 
 <body>
-    <header>
-        <h1>Controle de Pizzas</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Controle de Pizzas</a></li>
-                <li><a href="#">Controle de Funcionários</a></li>
-                <li><a href="#">Pedidos</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div th:insert="~{fragmentos/header :: header}"></div>
 
     <section id="main-content">
         <h2>Lista de Pizzas Cadastradas</h2>
         <ul class="ul-list-pizzas">
-            <li class="pizza-list-card">
-                <div class="pizza-card" id="pizza-card">
-                    <div class="pizza-img-info">
-                        <img src="margherita.jpg" alt="Pizza Margherita">
-                    </div>
-                    <div class="pizza-card-info">
-                        <h3>Margherita</h3>
-                        <p>Tomate, muçarela e manjericão.</p>
-                        <p>Tamanho: (P, M, G)</p>
-                        <p>Preço: R$ 25,00</p>
-                        <button onclick="rmvPizza('Margherita')">Remover</button>
-                    </div>
-                </div>
-            </li>
-            <li class="pizza-list-card">
-                <div class="pizza-card" id="pizza-card">
-                    <div class="pizza-img-info">
-                        <img src="margherita.jpg" alt="Pizza Margherita">
-                    </div>
-                    <div class="pizza-card-info">
-                        <h3>Peperroni</h3>
-                        <p>Queijo e Peperroni.</p>
-                        <p>Tamanho: (P, M, G)</p>
-                        <p>Preço: R$ 20,00</p>
-                        <button onclick="rmvPizza('Peperroni')">Remover</button>
-                    </div>
-                </div>
-            </li>
+            <div th:insert="~{fragmentos/listaPizza :: list-pizza}">.</div>
         </ul>
 
         <div class="register-pizza-section">
             <div class="register-pizza-div">
-                <form action="cadastrarPizzas.php" method="post">
+                <form action="cadastro-pizza" method="post">
                     <label>Sabor da Pizza:</label><br>
-                    <input type="text" name="pizza_sabor" maxlength="30" placeholder="Digite o Sabor da Pizza">
-                    <br><br>
-                    <labeL>Ingredientes:</labeL><br>
-                    <input type="text" name="pizza_ingred" maxlength="50" placeholder="Digite os Ingredientes">
+                    <input type="text" name="sabor_pizza" maxlength="30" placeholder="Digite o Sabor da Pizza">
                     <br><br>
                     <labeL>Tamanho:</labeL><br>
-                    <input type="checkbox" name="cTamanho" id="cTamanho_id" value="P"><label
+                    <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="P"><label
                         for="cTamanho">P</label><br>
-                    <input type="checkbox" name="cTamanho" id="cTamanho_id" value="M"><label
+                    <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="M"><label
                         for="cTamanho">M</label><br>
-                    <input type="checkbox" name="cTamanho" id="cTamanho_id" value="G"><label for="cTamanho">G</label>
+                    <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="G"><label
+                        for="cTamanho">G</label>
                     <br><br>
                     <labeL>Valor:</labeL><br>
-                    <input type="text" maxlength="10" placeholder="Digite o Valor" name="pizza_valor">
+                    <input type="text" maxlength="10" placeholder="Digite o Valor" name="valor_pizza">
                     <br><br>
                     <input type="submit" value="Enviar">
                 </form>

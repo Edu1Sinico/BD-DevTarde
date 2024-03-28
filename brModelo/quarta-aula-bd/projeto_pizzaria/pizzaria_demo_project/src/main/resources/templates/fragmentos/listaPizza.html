@@ -1,0 +1,13 @@
+<li class="pizza-list-card" th:fragment="list-pizza" th:each="pizza : ${pizza}">
+    <div class="pizza-card">
+        <div class="pizza-img-info">
+            <!-- <img src="pizza.jpg" alt="Imagem da pizza"> -->
+        </div>
+        <div class="pizza-card-info">
+            <h3><span th:text="${pizza.sabor_pizza}"></span></h3>
+            <p>Tamanho: <span th:text="${pizza.tamanho_pizza}"></span></p>
+            <p>Preço: R$ <span th:text="${pizza.valor_pizza}"></span></p>
+            <button>Remover</button>
+        </div>
+    </div>
+</li>

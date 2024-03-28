@@ -6,10 +6,12 @@ import jakarta.persistence.*;
 
 @Entity
 public class Pizza implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    private int id_pizza;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id_pizza;
     private String sabor_pizza;
-    private double valor_pizza;
+    private String valor_pizza;
     private char tamanho_pizza;
 
 
@@ -29,11 +31,11 @@ public class Pizza implements Serializable {
         this.sabor_pizza = sabor_pizza;
     }
 
-    public double getValor_pizza() {
+    public String getValor_pizza() {
         return valor_pizza;
     }
 
-    public void setValor_pizza(double valor_pizza) {
+    public void setValor_pizza(String valor_pizza) {
         this.valor_pizza = valor_pizza;
     }
 
