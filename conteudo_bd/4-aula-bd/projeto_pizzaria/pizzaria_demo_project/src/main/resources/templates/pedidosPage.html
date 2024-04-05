@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{style.css}">
+    <title>Pizzaria - Pedidos</title>
+</head>
+
+<body>
+    <div th:insert="~{fragmentos/header :: header}"></div>
+
+    <section class="main-content">
+
+
+        <div class="register-pizza-section">
+            <div class="register-pizza-div">
+                <form action="cadastro-pizza" method="post">
+                    <div class="cadastro-pizza-title">
+                        <h1>Cadastro de Pedidos</h1>
+                    </div>
+                    <div class="cadastro-pizza-form-section">
+                        <div class="cad-pizza-form-div-1">
+                            <div class="cadastro-pizza-1 cad-pizza-div">
+                                <label>ID do Pedido:</label><br>
+                                <input type="text" name="sabor_pizza" maxlength="30"
+                                    placeholder="Digite o ID do Pedido">
+                            </div>
+                            <div class="cadastro-pizza-3 cad-pizza-div">
+                                <labeL>Cliente:</labeL><br>
+                                <input type="text" maxlength="10" placeholder="Digite o nome do cliente"
+                                    name="valor_pizza">
+                            </div>
+                            <div class="cadastro-pizza-input cad-pizza-div">
+                                <input type="submit" value="Enviar">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
