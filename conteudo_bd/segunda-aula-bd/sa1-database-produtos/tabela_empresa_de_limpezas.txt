@@ -1,0 +1,50 @@
+Pedidos:
+ - Cod_Pedido PK
+ - Data
+ - CPF_CLiente: FK
+ - Cod_Produto: FK
+ - Cod_Pagamento: FK
+ - Cod_Entrega: FK
+ - CPF_Colaborador: FK
+ - Cod_Estoque: FK
+
+Clientes:
+ - CPF_Cliente: PK
+ - Nome
+ - Endereco
+
+Produtos:
+ - Cod_Produto: PK
+ - Cod_Pagamento: FK
+ - Marca
+ - Preco
+ - Peso
+ - Categoria
+ - desconto
+
+Estoque:
+ - Cod_Estoque: PK
+ - Cod_Produto: FK
+ - quantidade
+
+Colaborador:
+ - CPF_Colaborador: PK
+ - Nome
+ - Idade
+ - Salario
+ - Cargo
+ - Turno
+ - Endereco
+ 
+Meios de pagamento:
+ - Cod_Pagamento: PK
+ - Cod_Cliente: FK
+ - Tipo_Pagamento 
+
+Entrega:
+ - Cod_Entrega: PK
+ - Cod_Produto: FK
+ - Cod_Estoque: FK
+ - Empresa_Colaboradora
+ - Frete
+ - Tempo
