@@ -3,7 +3,7 @@ include 'functions.php';
 
 ?>
 
-<?= template_header('Pizzaria Russel') ?>
+<?= template_header('Pizzaria Pimpolho') ?>
 
 <div class="content">
     <h2>Início</h2>
