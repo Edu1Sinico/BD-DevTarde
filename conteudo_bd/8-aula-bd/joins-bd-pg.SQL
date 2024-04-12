@@ -1,0 +1,28 @@
+--ATIVIDADE COMPLEMENTAR SQL JOINS
+
+-- CREATE TABLE E DATABASE
+CREATE DATABASE AT5;
+
+CREATE TABLE TabelaEX(
+    NOME varchar (100) null
+);
+
+CREATE TABLE TabelaFX(
+    NOME varchar (100) null
+);
+
+-- INSERIR DADOS
+
+INSERT INTO TabelaEX VALUES ('Claudia');
+INSERT INTO TabelaEX VALUES ('Cadu');
+INSERT INTO TabelaEX VALUES ('Bruno');
+INSERT INTO TabelaEX VALUES ('Lucineia');
+INSERT INTO TabelaEX VALUES ('Augusto');
+
+INSERT INTO TabelaFX VALUES ('Amarildo');
+INSERT INTO TabelaFX VALUES ('Alvaro');
+INSERT INTO TabelaFX VALUES ('Bruno');
+INSERT INTO TabelaFX VALUES ('Damares');
+INSERT INTO TabelaFX VALUES ('Augusto');
+
+SELECT 
