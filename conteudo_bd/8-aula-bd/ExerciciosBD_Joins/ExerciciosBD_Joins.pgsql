@@ -25,11 +25,20 @@ ON cliente.codcli = venda.codcli
 WHERE venda.vencto::text like '%-10-%';
 
 -- Exercício 4:
-SELECT cliente.nome, SUM(venda.valor) AS Valor Total, COUNT(*) AS qtdeTitulos  
+SELECT cliente.nome, SUM(venda.valor) AS ValorTotal, COUNT(*) AS qtdeTitulos  
 FROM cliente INNER JOIN venda 
 ON cliente.codcli = venda.codcli 
 GROUP BY cliente.nome;
 
 -- Exercício 5:
+SELECT cli.nome, SUM(ven.valor) AS ValorTotal, COUNT(*) AS qtdeTitulos  
+FROM cliente cli INNER JOIN venda ven
+ON cli.codcli = ven.codcli 
+GROUP BY cli.nome;
 
-
+-- Exercício 6:
+SELECT cli.nome, COUNT(ven.vencto) AS Vencidas 
+FROM cliente cli INNER JOIN venda ven 
+ON cli.codcli = ven.codcli
+WHERE ven.vencto < '2003-12-12'
+GROUP BY cli.nome;
