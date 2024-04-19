@@ -1,11 +1,11 @@
---  Exercício 1: Listar todos os pedidos com detalhes do cliente. Consulta para obter informações
+-- Exercício 1: Listar todos os pedidos com detalhes do cliente. Consulta para obter informações
 -- sobre os pedidos e os clientes que os fizeram.
 
 SELECT ped.id_pedidos, ped.status, cli.nome_cliente 
 FROM pedido ped 
 INNER JOIN cliente cli ON cli.id_pedidos = ped.id_pedidos;
 
---  Exercício 2: Listar todos os itens de pedidos com detalhes da pizza. Consulta para mostrar os
+-- Exercício 2: Listar todos os itens de pedidos com detalhes da pizza. Consulta para mostrar os
 -- itens de pedidos e os detalhes das pizzas associadas a eles.
 
 SELECT ped.*, piz.* 
@@ -75,49 +75,61 @@ LEFT JOIN Promocoes pr ON p.id_pizza = pr.id_promocao;
 -- Exercício 11: Listar todos os clientes cadastrados. Consulta para recuperar todos os clientes
 -- que já fizeram pedidos na pizzaria.
 
-
+SELECT * FROM cliente;
 
 -- Exercício 12: Listar todos os pedidos realizados em um determinado período. Consulta para
 -- visualizar todos os pedidos feitos dentro de um intervalo de datas específico.
 
-
+SELECT * FROM Pedido WHERE Data BETWEEN '2024-04-15' AND '2024-04-17';
 
 -- Exercício 13: Listar os itens de um pedido específico. Consulta para ver todos os itens (pizzas,
 -- bebidas, etc.) em um pedido específico.
 
-
+SELECT * FROM Item_pedido WHERE ID_pedido = 1;
 
 -- Exercício 14: Calcular o total gasto por um cliente. Consulta para somar o valor de todos os
 -- pedidos feitos por um cliente específico.
 
-
+SELECT c.Nome_cliente, SUM(p.Valor_total) AS Total_gasto
+FROM Cliente c
+JOIN Pedido p ON c.ID_pedidos = p.ID_pedidos
+WHERE c.ID_pedidos = 1
+GROUP BY c.Nome_cliente;
 
 -- Exercício 15: Listar os sabores de pizza mais populares. Consulta para mostrar os sabores de
 -- pizza mais pedidos pelos clientes.
 
-
+SELECT i.Nome_ingrediente AS Sabor_pizza, COUNT(*) AS Total_pedidos
+FROM Ingredientes i
+GROUP BY i.Nome_ingrediente
+ORDER BY Total_pedidos DESC;
 
 -- Exercício 16: Verificar a disponibilidade de um determinado sabor de pizza. Consulta para
 -- verificar se um sabor específico de pizza está disponível no momento.
 
-
+SELECT *
+FROM Pizza
+WHERE Sabor_pizza = 'Calabresa';
 
 -- Exercício 17: Listar todos os funcionários. Consulta para recuperar informações de todos os
 -- funcionários da pizzaria.
 
-
+SELECT * FROM Funcionario;
 
 -- Exercício 18: Verificar o horário de funcionamento da pizzaria. Consulta para saber os horários
 -- de abertura e fechamento da pizzaria.
 
-
+SELECT '10:00' AS Horario_abertura, '22:00' AS Horario_fechamento;
 
 -- Exercício 19: Listar os pedidos em andamento. Consulta para ver todos os pedidos que ainda
 -- não foram entregues.
 
-
+SELECT *
+FROM Pedido
+WHERE Status <> 'Entregue';
 
 -- Exercício 20: Calcular o tempo médio de espera dos pedidos. Consulta para calcular o tempo
 -- médio que os clientes esperam pelos pedidos.
 
-
+SELECT AVG(Tempo_espera) AS Tempo_medio_espera
+FROM Pedido;
