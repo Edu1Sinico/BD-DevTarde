@@ -65,9 +65,7 @@ LEFT JOIN Pizza piz ON enc.ID_pizza = piz.ID_pizza;
 -- Exercício 10: Listar todas as pizzas com suas respectivas promoções. Consulta para mostrar
 -- todas as pizzas e suas promoções, se houver.
 
-SELECT enc.ID_pedidos, piz.Sabor_pizza, enc.Tamanho_pizza 
-FROM Encomendar enc 
-LEFT JOIN Pizza piz ON enc.ID_pizza = piz.ID_pizza;
+
 
 ------------> Segunda parte - Consulta com comandos SQL básicos: <------------
 
