@@ -46,7 +46,8 @@ LEFT JOIN Ingredientes ing ON piz.ID_pizza = ing.ID_pizza;
 
 SELECT ped.ID_pedidos, ped.Status, ent.Detalhes_entrega 
 FROM Pedido ped 
-LEFT JOIN Entrega ent ON ped.ID_pedidos = ent.ID_pedido;
+LEFT JOIN Entrega ent ON ped.ID_pedidos = ent.ID_pedido
+WHERE ent.detalhes_entrega IS NOT NULL;
 
 -- Exercício 8: Listar todos os funcionários com seus respectivos supervisores. Consulta para
 -- exibir os funcionários e seus supervisores, se aplicável.
@@ -65,7 +66,9 @@ LEFT JOIN Pizza piz ON enc.ID_pizza = piz.ID_pizza;
 -- Exercício 10: Listar todas as pizzas com suas respectivas promoções. Consulta para mostrar
 -- todas as pizzas e suas promoções, se houver.
 
-
+SELECT p.Sabor_pizza, COALESCE(pr.Nome_promocao, 'Sem promoção') AS Promocao, COALESCE(pr.Desconto, 0) AS Desconto
+FROM Pizza p
+LEFT JOIN Promocoes pr ON p.id_pizza = pr.id_promocao;
 
 ------------> Segunda parte - Consulta com comandos SQL básicos: <------------
 
