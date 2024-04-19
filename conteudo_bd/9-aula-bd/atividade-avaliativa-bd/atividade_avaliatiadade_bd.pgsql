@@ -37,14 +37,16 @@ LEFT JOIN Pedido ped ON cli.ID_pedidos = ped.ID_pedidos;
 -- Exercício 6: Listar todas as pizzas disponíveis com seus respectivos ingredientes. Consulta
 -- para mostrar todas as pizzas disponíveis e seus ingredientes.
 
--- SELECT piz.Sabor_pizza, ing.Nome_ingrediente 
--- FROM Pizza piz 
--- LEFT JOIN Ingredientes ing ON piz.ID_pizza = ing.ID_pizza;
+SELECT piz.Sabor_pizza, ing.Nome_ingrediente 
+FROM Pizza piz 
+LEFT JOIN Ingredientes ing ON piz.ID_pizza = ing.ID_pizza;
 
 -- Exercício 7: Listar todos os pedidos com detalhes de entrega (se disponível). Consulta para
 -- mostrar os pedidos com detalhes de entrega, se disponíveis.
 
-
+SELECT ped.ID_pedidos, ped.Status, ent.Detalhes_entrega 
+FROM Pedido ped 
+LEFT JOIN Entrega ent ON ped.ID_pedidos = ent.ID_pedido;
 
 -- Exercício 8: Listar todos os funcionários com seus respectivos supervisores. Consulta para
 -- exibir os funcionários e seus supervisores, se aplicável.
@@ -56,12 +58,16 @@ LEFT JOIN Funcionario fun2 ON fun1.ID_supervisor = fun2.ID_funcionarios;
 -- Exercício 9: Listar todos os itens de pedidos com seus respectivos tamanhos. Consulta para
 -- mostrar os itens de pedidos e os tamanhos das pizzas associadas a eles.
 
-
+SELECT enc.ID_pedidos, piz.Sabor_pizza, enc.Tamanho_pizza 
+FROM Encomendar enc 
+LEFT JOIN Pizza piz ON enc.ID_pizza = piz.ID_pizza;
 
 -- Exercício 10: Listar todas as pizzas com suas respectivas promoções. Consulta para mostrar
 -- todas as pizzas e suas promoções, se houver.
 
-
+SELECT enc.ID_pedidos, piz.Sabor_pizza, enc.Tamanho_pizza 
+FROM Encomendar enc 
+LEFT JOIN Pizza piz ON enc.ID_pizza = piz.ID_pizza;
 
 ------------> Segunda parte - Consulta com comandos SQL básicos: <------------
 
