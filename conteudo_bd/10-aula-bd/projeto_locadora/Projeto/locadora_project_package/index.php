@@ -21,10 +21,10 @@
     </header>
 
     <main>
-        <h1>Bem vindo a nossa locadora</h1>
+        <h1>Bem vindo a nossa locadora!</h1>
         <h2>O que você gostaria?</h2>
         <div class="container">
-            
+
         </div>
     </main>
 </body>

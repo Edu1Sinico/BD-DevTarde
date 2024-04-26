@@ -1,8 +1,12 @@
-
+:root{
+    --cor-background-cinza: rgb(37, 36, 41);
+}
 
 body{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0px;
+    background-color: var(--cor-background-cinza);
+    color: white;
 }
 
 header{
