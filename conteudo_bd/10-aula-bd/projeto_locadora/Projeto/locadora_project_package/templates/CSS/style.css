@@ -1,0 +1,34 @@
+
+
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0px;
+}
+
+header{
+    width: 100%;
+    height: 30px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+header nav{
+    width: 7%;
+    margin: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header nav a{
+    color: white;
+    text-decoration: none;
+}
+
+header nav a:hover{
+    color: rgb(190, 190, 190);
+}
+
+main{
+    margin: 5vh;
+}
