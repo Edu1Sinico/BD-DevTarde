@@ -1,4 +1,4 @@
--- Geração de Modelo físico
+-- Geraï¿½ï¿½o de Modelo fï¿½sico
 -- Sql ANSI 2003 - brModelo.
 
 
@@ -9,7 +9,7 @@ Cidade Varchar(255) Not Null,
 Num_Agencia INT PRIMARY KEY,
 Estado Varchar(2) Not Null,
 Contato Varchar(11) Not Null
-)
+);
 
 CREATE TABLE Pagamento (
 Valor Money Not Null,
@@ -20,7 +20,7 @@ Id_pagamento INT,
 Comprovante Varchar(255),
 Id_Comprovante INT,
 PRIMARY KEY(Id_pagamento,Id_Comprovante)
-)
+);
 
 CREATE TABLE Carro (
 Modelo Varchar(25),
@@ -29,7 +29,7 @@ Id_cliente INT PRIMARY KEY,
 Placa Varchar(7) Not Null,
 Tipo Varchar (25),
 Disponibilidade Bool Not Null
-)
+);
 
 CREATE TABLE Manutencao (
 KM Decimal Not Null,
@@ -38,7 +38,7 @@ Tipo_Manutencao Varchar(100) Not Null,
 Id_Manutencao INT PRIMARY KEY,
 Descricao Varchar(255) Not Null,
 Manutencao Date Not Null
-)
+);
 
 CREATE TABLE Cliente (
 Endereco Varchar(255) Not Null,
@@ -50,8 +50,7 @@ Sobrenome Varchar(125) Not Null,
 Estado Varchar(2) Not Null,
 Celular Varchar(11) Not Null,
 Id_pagamento INT,
-FOREIGN KEY(/*erro: ??*/) REFERENCES Pagamento (Id_pagamento,Id_Comprovante)
-)
+);
 
 CREATE TABLE Funcionarios (
 Nome Varchar(125) Not Null,
@@ -62,14 +61,14 @@ Data_Contratacao Date Not Null,
 Salario Money Not Null,
 Num_Agencia INT,
 FOREIGN KEY(Num_Agencia) REFERENCES Agencia (Num_Agencia)
-)
+);
 
 CREATE TABLE Feedback (
 Id_Feedback INT PRIMARY KEY,
 Avaliacao INT,
 Comentario Varchar(255),
 data_feedback Date
-)
+);
 
 CREATE TABLE Locacao (
 Id_locacao INT PRIMARY KEY,
@@ -79,20 +78,19 @@ Data_Devolucao Date Not Null,
 Id_cliente INT,
 FOREIGN KEY(Id_cliente) REFERENCES Carro (Id_cliente),
 FOREIGN KEY(Id_cliente) REFERENCES Cliente (Id_cliente)
-)
+);
 
 CREATE TABLE Recebe (
 Id_Manutencao INT,
 Id_cliente INT,
 FOREIGN KEY(Id_Manutencao) REFERENCES Manutencao (Id_Manutencao),
 FOREIGN KEY(Id_cliente) REFERENCES Carro (Id_cliente)
-)
+);
 
 CREATE TABLE Envia (
 Id_Envio INT PRIMARY KEY,
 Observacao Varchar(255),
 Id_Feedback INT,
 Id_cliente INT,
-FOREIGN KEY(Id_Feedback) REFERENCES Feedback (Id_Feedback)/*falha: chave estrangeira*/
-)
-
+FOREIGN KEY(Id_Feedback) REFERENCES Feedback (Id_Feedback)
+);
