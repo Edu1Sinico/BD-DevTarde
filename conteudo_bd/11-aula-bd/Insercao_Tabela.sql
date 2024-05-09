@@ -17,13 +17,13 @@ VALUES
     (2000.00, '2024-05-01', 'Pago', 'Cartão de Débito', 5, 'Recibo-321', 105);
 
 -- Inserção de dados na tabela Carro
-INSERT INTO Carro (Modelo, Ano, Id_cliente, Placa, Tipo, Disponibilidade)
+INSERT INTO Carro (Modelo, Ano, Id_carro, Placa, Tipo, Disponibilidade)
 VALUES
-    ('Civic', 2019, 101, 'ABC1234', 'Sedan', true),
-    ('Golf', 2018, 102, 'XYZ5678', 'Hatchback', false),
-    ('Corolla', 2020, 103, 'DEF9876', 'Sedan', true),
-    ('HB20', 2017, 104, 'MNO4321', 'Hatchback', true),
-    ('Cruze', 2019, 105, 'GHI7890', 'Sedan', false);
+    ('Civic', 2019, 1, 'ABC1234', 'Sedan', true),
+    ('Golf', 2018, 2, 'XYZ5678', 'Hatchback', false),
+    ('Corolla', 2020, 3, 'DEF9876', 'Sedan', true),
+    ('HB20', 2017, 4, 'MNO4321', 'Hatchback', true),
+    ('Cruze', 2019, 5, 'GHI7890', 'Sedan', false);
 
 -- Inserção de dados na tabela Manutencao
 INSERT INTO Manutencao (KM, Custo, Tipo_Manutencao, Id_Manutencao, Descricao, Manutencao)
@@ -62,22 +62,22 @@ VALUES
     (5, 4, 'Boa experiência, mas poderiam oferecer mais variedade de carros.', '2024-05-03');
 
 -- Inserção de dados na tabela Locacao
-INSERT INTO Locacao (Id_locacao, Data_locacao, Valor_Total, Data_Devolucao, Id_cliente)
+INSERT INTO Locacao (Id_locacao, Data_locacao, Valor_Total, Data_Devolucao, Id_cliente, Id_carro)
 VALUES
-    (1, '2024-04-15', 300.00, '2024-04-20', 101),
-    (2, '2024-04-20', 250.00, '2024-04-25', 102),
-    (3, '2024-04-25', 400.00, '2024-05-01', 103),
-    (4, '2024-04-28', 350.00, '2024-05-02', 104),
-    (5, '2024-05-01', 280.00, '2024-05-03', 105);
+    (1, '2024-04-15', 300.00, '2024-04-20', 101, 1),
+    (2, '2024-04-20', 250.00, '2024-04-25', 102, 2),
+    (3, '2024-04-25', 400.00, '2024-05-01', 103, 3),
+    (4, '2024-04-28', 350.00, '2024-05-02', 104, 4),
+    (5, '2024-05-01', 280.00, '2024-05-03', 105, 5);
 
 -- Inserção de dados na tabela Recebe
-INSERT INTO Recebe (Id_Manutencao, Id_cliente)
+INSERT INTO Recebe (Id_Manutencao, Id_carro)
 VALUES
-    (1, 101),
-    (2, 102),
-    (3, 103),
-    (4, 104),
-    (5, 105);
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
 
 -- Inserção de dados na tabela Envia
 INSERT INTO Envia (Id_Envio, Observacao, Id_Feedback, Id_cliente)

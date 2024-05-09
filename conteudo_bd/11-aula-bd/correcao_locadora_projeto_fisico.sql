@@ -25,7 +25,7 @@ PRIMARY KEY(Id_pagamento,Id_Comprovante)
 CREATE TABLE Carro (
 Modelo Varchar(25),
 Ano INT,
-Id_cliente INT PRIMARY KEY,
+Id_carro INT PRIMARY KEY,
 Placa Varchar(7) Not Null,
 Tipo Varchar (25),
 Disponibilidade Bool Not Null
@@ -49,7 +49,7 @@ Nome Varchar(125) Not Null,
 Sobrenome Varchar(125) Not Null,
 Estado Varchar(2) Not Null,
 Celular Varchar(11) Not Null,
-Id_pagamento INT,
+Id_pagamento INT
 );
 
 CREATE TABLE Funcionarios (
@@ -76,15 +76,16 @@ Data_locacao Date Not Null,
 Valor_Total Money Not Null,
 Data_Devolucao Date Not Null,
 Id_cliente INT,
-FOREIGN KEY(Id_cliente) REFERENCES Carro (Id_cliente),
+Id_carro INT,
+FOREIGN KEY(Id_carro) REFERENCES Carro (Id_carro),
 FOREIGN KEY(Id_cliente) REFERENCES Cliente (Id_cliente)
 );
 
 CREATE TABLE Recebe (
 Id_Manutencao INT,
-Id_cliente INT,
+Id_carro INT,
 FOREIGN KEY(Id_Manutencao) REFERENCES Manutencao (Id_Manutencao),
-FOREIGN KEY(Id_cliente) REFERENCES Carro (Id_cliente)
+FOREIGN KEY(Id_carro) REFERENCES Carro (Id_carro)
 );
 
 CREATE TABLE Envia (
