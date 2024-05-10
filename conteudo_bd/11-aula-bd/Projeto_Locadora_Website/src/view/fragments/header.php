@@ -8,7 +8,9 @@
         <div class="div-menu">
             <div class="div-menu-contact-login-register">
                 <div class="div-contact">
-                    CONTATO: (00) 00000-0000
+                    <a href="#"><i class="fas fa-regular fa-envelope"></i></a>
+                    <a href="#"><i class="fas fa-regular fa-phone"></i></a>
+                    <a href="#"><i class="fas fa-regular fa-laptop"></i></a>
                 </div>
                 <div class="div-btn-login-register">
                     <div class="div-login">
