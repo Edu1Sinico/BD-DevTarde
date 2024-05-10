@@ -1,0 +1,17 @@
+:root{
+    --font-standart: 
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: 
+}
+
+.iframe-header{
+    width: 100%;
+    height: 150vw;
+    overflow-y: hidden;
+    border: 0px;
+}

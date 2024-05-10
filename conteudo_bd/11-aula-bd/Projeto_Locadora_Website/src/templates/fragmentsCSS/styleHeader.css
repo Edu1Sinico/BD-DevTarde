@@ -1,0 +1,59 @@
+
+
+.header-fragment{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.header-section-menu{
+   width: 50vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.header-section-menu .div-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.div-menu-contact-login-register{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50vh;
+    padding: 10px;
+}
+
+.nav-links{
+    width: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links ul{
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-links ul li{
+    list-style: none;
+}
+
+.nav-links ul li a{
+    color: black;
+    text-decoration: none;
+}
