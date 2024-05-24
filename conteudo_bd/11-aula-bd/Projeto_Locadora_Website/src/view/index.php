@@ -12,14 +12,18 @@
 </head>
 
 <body>
+    <!-- Seção header -->
     <div class="div-header-import">
         <?php include 'fragments/header.php'; ?>
     </div>
+    <!-- Seção principal -->
     <main>
+        <!-- Seção banner -->
         <div class="div-banner-section">
             <img src="../assets/banner/locadora-banner.png" alt="banner">
         </div>
-        <div class="div-about-us">
+        <!-- Seção sobre nós -->
+        <div class="div-about-us" id="about-us">
             <div class="div-about-us-1">
                 <div class="div-about-us-title">
                     <h1 class="about-us-title">BEM-VINDO AO</h1>
@@ -40,7 +44,27 @@
                 </div>
             </div>
         </div>
+        <!-- Seção cards dos veículos-->
+        <div class="div-cards-section">
+            <div class="div-card-car">
+                <div class="div-car-img">
+                    <img src="../assets/carros-miniatura/onix.png" alt="carro">
+                </div>
+                <div class="div-car-info">
+                    <ul>
+                        <li>Modelo: Onix</li>
+                        <li>Ano: 2024</li>
+                        <li>tipo: Hatchback</li>
+                        <li>Marca: Chevrolet</li>
+                    </ul>
+                </div>
+                <div class="div-car-button">
+                    <button>Alugar</button>
+                </div>
+            </div>
+        </div>
     </main>
+    <!-- Seção footer -->
     <div class="div-footer-import">
         <?php include 'fragments/footer.php'; ?>
     </div>

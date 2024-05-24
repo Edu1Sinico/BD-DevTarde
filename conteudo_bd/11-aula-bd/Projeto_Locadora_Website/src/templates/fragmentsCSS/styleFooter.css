@@ -4,7 +4,7 @@
     --footer-bottom-color: #292929;
 }
 
-.div-logo-footer img, .footer-links,.footer-icon, li, .div-contact-section-title h5, .div-footer-direitos-autorais h5{
+.div-logo-footer img, .footer-links, s.footer-icon, .div-links-section ul li, .div-contact-section-title h5, .div-footer-direitos-autorais h5{
     font-weight: 400;
     font-style: normal;
     text-decoration: none;

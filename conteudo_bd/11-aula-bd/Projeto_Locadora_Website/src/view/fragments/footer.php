@@ -8,7 +8,7 @@
         <div class="div-links-section">
             <ul>
                 <li><a href="#" class="footer-links">Home</a></li>
-                <li><a href="#" class="footer-links">Sobre Nós</a></li>
+                <li><a href="#about-us" class="footer-links">Sobre Nós</a></li>
                 <li><a href="#" class="footer-links">Veículos</a></li>
                 <li><a href="#" class="footer-links">Nossas Lojas</a></li>
                 <li><a href="#" class="footer-links">Privacidade</a></li>

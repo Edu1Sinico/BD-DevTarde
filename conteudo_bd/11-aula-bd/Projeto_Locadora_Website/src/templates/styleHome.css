@@ -99,6 +99,7 @@ main {
     border-radius: 0px;
     border: 1px solid black;
     transition: all 0.3s ease-in-out;
+    font-size: large;
     cursor: pointer;
 }
 
