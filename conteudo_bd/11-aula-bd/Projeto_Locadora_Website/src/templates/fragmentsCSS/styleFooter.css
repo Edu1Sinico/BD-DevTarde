@@ -1,0 +1,86 @@
+:root{
+    --footer-color: #222222;
+    --font-footer-color: #646464;
+    --footer-bottom-color: #292929;
+}
+
+.div-logo-footer img, .footer-links,.footer-icon, li, .div-contact-section-title h5, .div-footer-direitos-autorais h5{
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    list-style: none;
+    color: var(--font-footer-color);
+}
+
+.footer-links,.footer-icon{
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.footer-links:hover, .footer-icon:hover{
+    color: white;
+}
+
+.footer-fragment{
+    top: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--footer-color);
+}
+
+.div-footer-main-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+}
+
+.div-links-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.div-links-section ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.div-contact-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 5px;
+}
+
+.div-contact-section-title h5{
+    margin: 2.5px;
+}
+
+.div-contact-links-icons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 15%;
+    margin: 2.5px;
+}
+
+.div-footer-direitos-autorais{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--footer-bottom-color);
+}

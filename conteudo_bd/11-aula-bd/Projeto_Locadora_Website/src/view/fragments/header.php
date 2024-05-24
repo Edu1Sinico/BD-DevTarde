@@ -1,6 +1,6 @@
 <header class="header-fragment">
     <div class="header-section-logo">
-        <div class="div-logo">
+        <div class="div-logo-header">
             <img src="" alt="Logo">
         </div>
     </div>

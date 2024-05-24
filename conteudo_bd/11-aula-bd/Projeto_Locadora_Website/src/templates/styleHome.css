@@ -12,16 +12,25 @@ body{
     overflow-x: hidden;
 }
 
-.div-header-import{
-    width: 100%;
-    height: 900px;
-    background-image: url("../assets/banner/image-car-banner.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
 main{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
     width: 100%;
     height: 100vw;
+}
+
+.div-header-import{
+    width: 100%;
+}
+
+.div-banner-section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-banner-section img{
+    /* width: 100%; */
 }
