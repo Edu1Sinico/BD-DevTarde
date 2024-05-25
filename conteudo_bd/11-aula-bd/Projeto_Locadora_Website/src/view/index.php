@@ -40,27 +40,73 @@
             </div>
             <div class="div-about-us-2">
                 <div class="div-about-us-img">
-                    <img src="" alt="exemple">
+                    <img src="" alt="example">
                 </div>
             </div>
         </div>
         <!-- Seção cards dos veículos-->
         <div class="div-cards-section">
+            <div class="div-cards-title">
+                <h1>CONHEÇA OS NOSSOS VEÍCULOS!</h1>
+            </div>
+        <div class="div-cards">
             <div class="div-card-car">
-                <div class="div-car-img">
-                    <img src="../assets/carros-miniatura/onix.png" alt="carro">
+                    <div class="div-car-img">
+                        <img src="../assets/carros-miniatura/polo.png" alt="carro">
+                    </div>
+                    <div class="div-car-info">
+                    <div class="car-title">
+                            <h2>Polo</h2>
+                        </div>
+                        <ul>
+                            <li>Ano: 2018</li>
+                            <li>Tipo: Hatchback</li>
+                            <li>Marca: Volkswagen</li>
+                        </ul>
+                    </div>
+                    <div class="div-car-button">
+                        <button>Alugar</button>
+                    </div>
                 </div>
-                <div class="div-car-info">
-                    <ul>
-                        <li>Modelo: Onix</li>
-                        <li>Ano: 2024</li>
-                        <li>tipo: Hatchback</li>
-                        <li>Marca: Chevrolet</li>
-                    </ul>
+                <div class="div-card-car">
+                    <div class="div-car-img">
+                        <img src="../assets/carros-miniatura/onix.png" alt="carro">
+                    </div>
+                    <div class="div-car-info">
+                        <div class="car-title">
+                            <h2>Onix</h2>
+                        </div>
+                        <ul>
+                            <li>Ano: 2024</li>
+                            <li>Tipo: Hatchback</li>
+                            <li>Marca: Chevrolet</li>
+                        </ul>
+                    </div>
+                    <div class="div-car-button">
+                        <button>Alugar</button>
+                    </div>
                 </div>
-                <div class="div-car-button">
-                    <button>Alugar</button>
+                <div class="div-card-car">
+                    <div class="div-car-img">
+                        <img src="../assets/carros-miniatura/mobi.png" alt="carro">
+                    </div>
+                    <div class="div-car-info">
+                        <div class="car-title">
+                            <h2>Mobi</h2>
+                        </div>
+                        <ul>
+                            <li>Ano: 2020</li>
+                            <li>Tipo: Hatchback</li>
+                            <li>Marca: Fiat</li>
+                        </ul>
+                    </div>
+                    <div class="div-car-button">
+                        <button>Alugar</button>
+                    </div>
                 </div>
+            </div>
+            <div class="div-cards-section-button">
+                <button>Ver Todos</button>
             </div>
         </div>
     </main>
