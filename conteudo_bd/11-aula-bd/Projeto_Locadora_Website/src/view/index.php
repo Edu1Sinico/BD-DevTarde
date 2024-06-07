@@ -49,13 +49,13 @@
             <div class="div-cards-title">
                 <h1>CONHEÇA OS NOSSOS VEÍCULOS!</h1>
             </div>
-        <div class="div-cards">
-            <div class="div-card-car">
+            <div class="div-cards">
+                <div class="div-card-car">
                     <div class="div-car-img">
                         <img src="../assets/carros-miniatura/polo.png" alt="carro">
                     </div>
                     <div class="div-car-info">
-                    <div class="car-title">
+                        <div class="car-title">
                             <h2>Polo</h2>
                         </div>
                         <ul>
@@ -109,6 +109,7 @@
                 <button>Ver Todos</button>
             </div>
         </div>
+
     </main>
     <!-- Seção footer -->
     <div class="div-footer-import">

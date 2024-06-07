@@ -4,7 +4,7 @@ function pdo_connect_pgsql() {
     $DATABASE_PORT = '5432';
     $DATABASE_USER = 'postgres';
     $DATABASE_PASS = 'postgres';
-    $DATABASE_NAME = 'Turma_A';
+    $DATABASE_NAME = 'tardeA';
     
     try {
         $pdo = new PDO('pgsql:host=' . $DATABASE_HOST . ';port=' . $DATABASE_PORT . ';dbname=' . $DATABASE_NAME . ';user=' . $DATABASE_USER . ';password=' . $DATABASE_PASS);
@@ -40,6 +40,7 @@ echo <<<EOT
     </nav>
 EOT;
 }
+
 function template_footer() {
 echo <<<EOT
     </body>
