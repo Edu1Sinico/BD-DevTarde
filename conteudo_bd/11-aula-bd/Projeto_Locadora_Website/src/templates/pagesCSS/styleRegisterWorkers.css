@@ -50,6 +50,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .div-form-section {
@@ -57,7 +58,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 25vh;
+    height: 40vh;
     padding: 15px;
 }
 
@@ -104,8 +105,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 15px;
+    width: 50%;
+    margin-top: 8vh;
 }
 
 .submit-btn {

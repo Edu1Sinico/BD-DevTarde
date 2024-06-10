@@ -54,20 +54,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input class="input-text" type="date" name="data_contratacao">
                         <div class="div-select-box-available">
                             <label for="num_agencia">Número da Agência:</label>
-                            <select name="num_agencia" required>
+                            <select name="num_agencia">
                                 <?php /*
-                                $agencias = listarAgencia($pdo);
+                                    $agencias = listarAgencia($pdo);
 
-                                foreach ($agencias as $agencia) :
+                                    foreach ($agencias as $agencia) :
+                                    ?>
+                                        <option value="<?php $agencia['num_agencia']; ?>"><?php echo $agencia['num_agencia']; ?></option>
+                                    <?php endforeach; */
                                 ?>
-                                    <option value="<?php $agencia['num_agencia']; ?>"><?php echo $agencia['num_agencia']; ?></option>
-                                <?php endforeach; */ ?>
                             </select>
                         </div>
                     </div>
-                    <div class="div-sumbit-btn-section">
-                        <input type="submit" value="Enviar" class="submit-btn">
-                    </div>
+                </div>
+                <div class="div-sumbit-btn-section">
+                    <input type="submit" value="Enviar" class="submit-btn">
                 </div>
             </form>
         </section>
@@ -99,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <td><?php echo $func['id_funcionario']; ?></td>
                             <td><?php echo $func['nome']; ?></td>
                             <td><?php echo $func['sobrenome']; ?></td>
-                            <td><?php echo $func['workergo']; ?></td>
+                            <td><?php echo $func['cargo']; ?></td>
                             <td><?php echo $func['salario']; ?></td>
                             <td><?php echo $func['data_contratacao']; ?></td>
                             <td><?php echo $func['num_agencia']; ?></td>
