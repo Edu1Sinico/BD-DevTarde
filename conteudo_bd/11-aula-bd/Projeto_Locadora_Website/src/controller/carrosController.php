@@ -83,10 +83,8 @@ function listarVeiculos($pdo)
 {
     try {
         $stmt = $pdo->query('SELECT * FROM carro');
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         return 'Erro ao listar os veículos: ' . $e->getMessage();
     }
-    die();
 }
-

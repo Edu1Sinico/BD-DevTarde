@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Seção principal -->
     <main>
-        <div class="div-form-register-car">
+        <section class="div-form-register-car">
             <!-- Exibe a mensagem de sucesso ou erro -->
             <?php if ($message) : ?>
                 <div class="message">
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="" method="post">
                 <div class="div-form-section">
                     <div class="div-form-section-left">
-                        <input class="input-text" type="text" name="id_carro" placeholder="Insira o ID do veículo" required>
+                        <input class="input-text" type="number" min="0" name="id_carro" placeholder="Insira o ID do veículo" required>
                         <input class="input-text" type="text" name="modelo" placeholder="Insira o modelo do veículo" required>
                         <input class="input-text" type="text" name="ano" placeholder="Insira o ano do veículo" required>
                     </div>
@@ -73,11 +73,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </form>
-        </div>
+        </section>
 
-        <div class="div-cars-list-import">
-            <?php include '../fragments/lists/carsList.php'; ?>
-        </div>
+
+
+        <section class="div-table-vehicles-section">
+            <div class="div-table-vehicles-section-title">
+                <h1>Veículos Cadastrados</h1>
+            </div>
+            <div class="div-table-vehicles-section-table">
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Placa</th>
+                        <th>Tipo</th>
+                        <th>Disponibilidade</th>
+                    </thead>
+                    <?php
+
+                    // Chamar a função listarVeiculos para obter os veículos
+                    $carros = listarVeiculos($pdo);
+
+                    // Iterar sobre os veículos e exibi-los na tabela
+                    foreach ($carros as $carro) :
+                    ?>
+                        <tbody>
+                            <td><?php echo $carro['id_carro']; ?></td>
+                            <td><?php echo $carro['modelo']; ?></td>
+                            <td><?php echo $carro['ano']; ?></td>
+                            <td><?php echo $carro['placa']; ?></td>
+                            <td><?php echo $carro['tipo']; ?></td>
+                            <td><?php if ($carro['disponibilidade'] == 1) {
+                                    echo "Disponível";
+                                } else {
+                                    echo "Indisponível";
+                                } ?></td>
+                        </tbody>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </section>
 
     </main>
 

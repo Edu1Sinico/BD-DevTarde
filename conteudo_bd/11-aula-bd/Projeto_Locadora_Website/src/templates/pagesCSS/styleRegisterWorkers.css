@@ -25,7 +25,7 @@ main {
     flex-direction: column;
 }
 
-.div-form-register-car {
+.div-form-register-worker {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +33,7 @@ main {
     height: 50vh;
 }
 
-.div-form-register-car-title {
+.div-form-register-worker-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,11 +42,11 @@ main {
     border-bottom: 2px solid var(--standart-gray-color);
 }
 
-.div-form-register-car-title h1 {
+.div-form-register-worker-title h1 {
     margin: 0px;
 }
 
-.div-form-register-car form {
+.div-form-register-worker form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +130,7 @@ main {
 
 /* -------------------- Seção das Listas -------------------- */
 
-.div-table-vehicles-section {
+.div-table-workers-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,7 +139,7 @@ main {
     margin-top: 20vh;
 }
 
-.div-table-vehicles-section-title {
+.div-table-workers-section-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,11 +148,11 @@ main {
     border-bottom: 2px solid var(--standart-gray-color);
 }
 
-.div-table-vehicles-section-title h1 {
+.div-table-workers-section-title h1 {
     margin: 0px;
 }
 
-.div-table-vehicles-section-table {
+.div-table-workers-section-table {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,35 +162,35 @@ main {
     overflow-x: hidden;
 }
 
-.div-table-vehicles-section-table table {
+.div-table-workers-section-table table {
     width: 100%;
     height: 15vh;
     border-collapse: collapse;
 }
 
-.div-table-vehicles-section-table table thead {
+.div-table-workers-section-table table thead {
     background-color: gray;
 }
 
-.div-table-vehicles-section-table table thead th {
+.div-table-workers-section-table table thead th {
     width: 40px;
     padding: 15px;
     color: white;
 }
 
-.div-table-vehicles-section-table table tbody{
+.div-table-workers-section-table table tbody{
     background-color: rgb(235, 235, 235);
 }
 
-.div-table-vehicles-section-table table tbody:nth-child(odd){
+.div-table-workers-section-table table tbody:nth-child(odd){
     background-color: rgb(230, 230, 230);
 }
 
-.div-table-vehicles-section-table table tbody:hover{
+.div-table-workers-section-table table tbody:hover{
     background-color: rgb(143, 143, 143);
 }
 
-.div-table-vehicles-section-table table tbody td{
+.div-table-workers-section-table table tbody td{
     text-align: center;
     padding: 10px;
 }
