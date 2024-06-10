@@ -1,6 +1,5 @@
 <?php
 include '../../controller/funcionariosController.php';
-// include '../../controller/agenciaController.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -44,7 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="" method="post">
                 <div class="div-form-section">
                     <div class="div-form-section-left">
-                        <input class="input-text" type="number" min="0" name="id_funcionario" placeholder="Insira o ID do funcionário" required>
+                        <?php
+                        $funcsLast = listarUltimoFuncionario($pdo);
+                        $minIdFuncionario = $funcsLast ? $funcsLast : 1; // Defina um valor padrão caso a função retorne null
+                        ?>
+
+                        <input class="input-text" type="number" min="<?php echo htmlspecialchars($minIdFuncionario, ENT_QUOTES, 'UTF-8')+1; ?>" name="id_funcionario" placeholder="Insira o ID do funcionário" required>
                         <input class="input-text" type="text" name="nome" placeholder="Insira o nome do funcionário" required>
                         <input class="input-text" type="text" name="sobrenome" placeholder="Insira o sobrenome do funcionário" required>
                         <input class="input-text" type="text" name="cargo" placeholder="Insira o cargo do funcionário" required>
@@ -52,19 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="div-form-section-right">
                         <input class="input-text" type="number" min="0" name="salario" placeholder="Insira o salário do funcionário" required>
                         <input class="input-text" type="date" name="data_contratacao">
-                        <div class="div-select-box-available">
-                            <label for="num_agencia">Número da Agência:</label>
-                            <select name="num_agencia">
-                                <?php /*
-                                    $agencias = listarAgencia($pdo);
-
-                                    foreach ($agencias as $agencia) :
-                                    ?>
-                                        <option value="<?php $agencia['num_agencia']; ?>"><?php echo $agencia['num_agencia']; ?></option>
-                                    <?php endforeach; */
-                                ?>
-                            </select>
-                        </div>
+                        <input class="input-text" type="number" min="1" name="num_agencia" placeholder="Insira o Nº da Agência" required>
                     </div>
                 </div>
                 <div class="div-sumbit-btn-section">

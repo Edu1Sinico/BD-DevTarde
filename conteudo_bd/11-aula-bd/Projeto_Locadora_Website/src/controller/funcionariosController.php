@@ -90,3 +90,15 @@ function listarFuncionarios($pdo)
         return 'Erro ao listar os funcionários: ' . $e->getMessage();
     }
 }
+
+// Método para listar o último funcionário
+function listarUltimoFuncionario($pdo)
+{
+    try {
+        $stmt = $pdo->query('SELECT id_funcionario FROM funcionarios ORDER BY id_funcionario DESC LIMIT 1');
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['id_funcionario'] : null;
+    } catch (PDOException $e) {
+        return 'Erro ao listar o funcionário: ' . $e->getMessage();
+    }
+}
