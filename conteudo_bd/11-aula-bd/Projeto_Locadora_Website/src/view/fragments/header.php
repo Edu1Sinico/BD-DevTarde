@@ -23,11 +23,11 @@
             </div>
             <nav class="nav-links">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../view/">Home</a></li>
                     <li><a href="#about-us">Sobre Nós</a></li>
-                    <li><a href="#">Veículos</a></li>
-                    <li><a href="#">Nossas Lojas</a></li>
-                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="../view/">Veículos</a></li>
+                    <li><a href="../view/">Nossas Lojas</a></li>
+                    <li><a href="../view/">Fale Conosco</a></li>
                 </ul>
             </nav>
         </div>

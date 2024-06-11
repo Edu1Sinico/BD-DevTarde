@@ -57,10 +57,10 @@ function atualizarFuncionario($pdo)
     if (!empty($_POST)) {
         try {
             $dados = array(
+                ':id_funcionario' => $_POST['id_funcionario'],
                 ':nome' => $_POST['nome'],
                 ':sobrenome' => $_POST['sobrenome'],
                 ':cargo' => $_POST['cargo'],
-                ':id_funcionario' => $_POST['id_funcionario'],
                 ':data_contratacao' => $_POST['data_contratacao'],
                 ':salario' => $_POST['salario'],
                 ':num_agencia' => $_POST['num_agencia']

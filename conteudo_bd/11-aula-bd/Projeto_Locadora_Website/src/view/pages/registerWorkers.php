@@ -3,7 +3,11 @@ include '../../controller/funcionariosController.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $message = cadastrarFuncionario($pdo);
+    if ($_POST['operation'] == 'cadastrar') {
+        $message = cadastrarFuncionario($pdo);
+    } elseif ($_POST['operation'] == 'atualizar') {
+        $message = atualizarFuncionario($pdo);
+    }
 }
 ?>
 
@@ -37,30 +41,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endif; ?>
 
             <div class="div-form-register-worker-title">
-                <h1>Cadastrar Funcionário</h1>
+                <h1 id="register-worker-title-id">Cadastrar Funcionário</h1>
+                <h1 id="update-worker-title-id">Atualizar Funcionário</h1>
             </div>
 
-            <form action="" method="post">
+            <form action="" method="post" id="register-worker-form-id">
                 <div class="div-form-section">
                     <div class="div-form-section-left">
                         <?php
                         $funcsLast = listarUltimoFuncionario($pdo);
-                        $minIdFuncionario = $funcsLast ? $funcsLast : 1; // Defina um valor padrão caso a função retorne null
-                        ?>
+                        $minIdFuncionario = $funcsLast ? $funcsLast : 0; // Defina um valor padrão caso a função retorne null
 
-                        <input class="input-text" type="number" min="<?php echo htmlspecialchars($minIdFuncionario, ENT_QUOTES, 'UTF-8')+1; ?>" name="id_funcionario" placeholder="Insira o ID do funcionário" required>
-                        <input class="input-text" type="text" name="nome" placeholder="Insira o nome do funcionário" required>
-                        <input class="input-text" type="text" name="sobrenome" placeholder="Insira o sobrenome do funcionário" required>
-                        <input class="input-text" type="text" name="cargo" placeholder="Insira o cargo do funcionário" required>
+                        ?>
+                        <input type="hidden" name="operation" value="cadastrar" id="operation-id">
+                        <input class="input-text" type="number" min="<?php echo htmlspecialchars($minIdFuncionario, ENT_QUOTES, 'UTF-8') + 1; ?>" name="id_funcionario" placeholder="Insira o ID do funcionário" required id="id-funcionario">
+                        <input class="input-text" type="text" name="nome" placeholder="Insira o nome do funcionário" required id="nome">
+                        <input class="input-text" type="text" name="sobrenome" placeholder="Insira o sobrenome do funcionário" required id="sobrenome">
+                        <input class="input-text" type="text" name="cargo" placeholder="Insira o cargo do funcionário" required id="cargo">
                     </div>
                     <div class="div-form-section-right">
-                        <input class="input-text" type="number" min="0" name="salario" placeholder="Insira o salário do funcionário" required>
-                        <input class="input-text" type="date" name="data_contratacao">
-                        <input class="input-text" type="number" min="1" name="num_agencia" placeholder="Insira o Nº da Agência" required>
+                        <input class="input-text" type="number" min="0" name="salario" placeholder="Insira o salário do funcionário" required id="salario">
+                        <input class="input-text" type="date" name="data_contratacao" id="data_contratacao">
+                        <input class="input-text" type="number" min="1" name="num_agencia" placeholder="Insira o Nº da Agência" required id="num_agencia">
                     </div>
                 </div>
                 <div class="div-sumbit-btn-section">
-                    <input type="submit" value="Enviar" class="submit-btn">
+                    <input type="submit" value="Enviar" class="submit-btn" id="submit-btn-id">
                 </div>
             </form>
         </section>
@@ -70,15 +76,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1>Funcionários Cadastrados</h1>
             </div>
             <div class="div-table-workers-section-table">
-                <table>
+                <table id="workers-table-id">
                     <thead>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Cargo</th>
-                        <th>Salário</th>
-                        <th>Data de contratação</th>
-                        <th>Nº Agência</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Cargo</th>
+                            <th>Salário</th>
+                            <th>Data de contratação</th>
+                            <th>Nº Agência</th>
+                        </tr>
                     </thead>
                     <?php
 
@@ -89,13 +97,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     foreach ($funcs as $func) :
                     ?>
                         <tbody>
-                            <td><?php echo $func['id_funcionario']; ?></td>
-                            <td><?php echo $func['nome']; ?></td>
-                            <td><?php echo $func['sobrenome']; ?></td>
-                            <td><?php echo $func['cargo']; ?></td>
-                            <td><?php echo $func['salario']; ?></td>
-                            <td><?php echo $func['data_contratacao']; ?></td>
-                            <td><?php echo $func['num_agencia']; ?></td>
+                            <tr>
+                                <td><?php echo $func['id_funcionario']; ?></td>
+                                <td><?php echo $func['nome']; ?></td>
+                                <td><?php echo $func['sobrenome']; ?></td>
+                                <td><?php echo $func['cargo']; ?></td>
+                                <td><?php echo $func['salario']; ?></td>
+                                <td><?php echo $func['data_contratacao']; ?></td>
+                                <td><?php echo $func['num_agencia']; ?></td>
+                            </tr>
                         </tbody>
                     <?php endforeach; ?>
                 </table>
@@ -110,5 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
 </body>
+
+
+<script src="../../scripts/pages/scriptWorkers.js"></script>
 
 </html>

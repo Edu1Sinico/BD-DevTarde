@@ -195,3 +195,6 @@ main {
     padding: 10px;
 }
 
+.selected{
+    background-color: rgb(143, 143, 143);
+}
