@@ -65,8 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input class="input-text" type="number" min="1" name="num_agencia" placeholder="Insira o Nº da Agência" required id="num_agencia">
                     </div>
                 </div>
-                <div class="div-sumbit-btn-section">
-                    <input type="submit" value="Enviar" class="submit-btn" id="submit-btn-id">
+                <div class="div-btn-section">
+                    <!-- Botão de enviar -->
+                    <div class="div-sumbit-btn-section">
+                        <input type="submit" value="Enviar" class="submit-btn" id="submit-btn-id">
+                    </div>
+                    <!-- Botão de excluir -->
+                    <div class="div-delete-btn-section" id="delete-btn-section-id" style="display: none;">
+                        <input type="button" value="Excluir" class="delete-btn" id="delete-btn-id">
+                    </div>
                 </div>
             </form>
         </section>

@@ -100,16 +100,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     foreach ($carros as $carro) :
                     ?>
                         <tbody>
-                            <td><?php echo $carro['id_carro']; ?></td>
-                            <td><?php echo $carro['modelo']; ?></td>
-                            <td><?php echo $carro['ano']; ?></td>
-                            <td><?php echo $carro['placa']; ?></td>
-                            <td><?php echo $carro['tipo']; ?></td>
-                            <td><?php if ($carro['disponibilidade'] == 1) {
-                                    echo "Disponível";
-                                } else {
-                                    echo "Indisponível";
-                                } ?></td>
+                            <tr>
+                                <td><?php echo $carro['id_carro']; ?></td>
+                                <td><?php echo $carro['modelo']; ?></td>
+                                <td><?php echo $carro['ano']; ?></td>
+                                <td><?php echo $carro['placa']; ?></td>
+                                <td><?php echo $carro['tipo']; ?></td>
+                                <td><?php if ($carro['disponibilidade'] == 1) {
+                                        echo "Disponível";
+                                    } else {
+                                        echo "Indisponível";
+                                    } ?></td>
+                            </tr>
                         </tbody>
                     <?php endforeach; ?>
                 </table>

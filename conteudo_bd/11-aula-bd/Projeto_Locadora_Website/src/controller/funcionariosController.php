@@ -2,6 +2,16 @@
 include 'connection/connection.php';
 $pdo = pdo_connect_pgsql();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['operation'] === 'cadastrar') {
+        $message = cadastrarFuncionario($pdo);
+    } elseif ($_POST['operation'] === 'atualizar') {
+        $message = atualizarFuncionario($pdo);
+    } elseif ($_POST['operation'] === 'excluir') {
+        $message = deletarFuncionario($pdo);
+    }
+}
+
 // Método de cadastrar funcionários
 function cadastrarFuncionario($pdo)
 {
@@ -37,17 +47,17 @@ function cadastrarFuncionario($pdo)
 // Método de deletar os funcionários
 function deletarFuncionario($pdo)
 {
-    if (isset($_GET['id_funcionario'])) {
+    if (isset($_POST['id_funcionario'])) {
         try {
             $stmt = $pdo->prepare('DELETE FROM funcionarios WHERE id_funcionario = :id_funcionario');
-            if ($stmt->execute([':id_funcionario' => $_GET['id_funcionario']])) {
+            if ($stmt->execute([':id_funcionario' => $_POST['id_funcionario']])) {
                 return 'Funcionário deletado com sucesso!';
             }
         } catch (PDOException $e) {
             return 'Erro ao deletar funcionário: ' . $e->getMessage();
         }
     } else {
-        return 'id vazio.';
+        return 'ID vazio.';
     }
 }
 

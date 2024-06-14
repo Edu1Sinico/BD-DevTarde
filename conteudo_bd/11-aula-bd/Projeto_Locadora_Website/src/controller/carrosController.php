@@ -2,6 +2,8 @@
 include 'connection/connection.php';
 $pdo = pdo_connect_pgsql();
 
+
+
 // Método de cadastrar veículos
 function cadastrarVeiculo($pdo)
 {
@@ -39,14 +41,14 @@ function deletarVeiculo($pdo)
     if (isset($_GET['id_carro'])) {
         try {
             $stmt = $pdo->prepare('DELETE FROM carro WHERE id_carro = :id_carro');
-            if ($stmt->execute([':id_carro' => $_GET['id_carro']])) {
+            if ($stmt->execute([':id_carro' => $_POST['id_carro']])) {
                 return 'Veículo deletado com sucesso!';
             }
         } catch (PDOException $e) {
             return 'Erro ao deletar veículo: ' . $e->getMessage();
         }
     } else {
-        return 'id vazio.';
+        return 'ID vazio.';
     }
 }
 
@@ -86,5 +88,17 @@ function listarVeiculos($pdo)
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         return 'Erro ao listar os veículos: ' . $e->getMessage();
+    }
+}
+
+// Método para listar o último veículo
+function listarUltimoVeiculo($pdo)
+{
+    try {
+        $stmt = $pdo->query('SELECT id_carro FROM carro ORDER BY id_carro DESC LIMIT 1');
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['id_carro'] : null;
+    } catch (PDOException $e) {
+        return 'Erro ao listar o veículo: ' . $e->getMessage();
     }
 }
