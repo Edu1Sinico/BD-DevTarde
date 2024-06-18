@@ -23,9 +23,10 @@ main {
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+    height: 58.5vh;
 }
 
-.div-form-register-car {
+.div-form-register-client {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +34,7 @@ main {
     height: 50vh;
 }
 
-.div-form-register-car-title {
+.div-form-register-client-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,14 +43,15 @@ main {
     border-bottom: 2px solid var(--standart-gray-color);
 }
 
-.div-form-register-car-title h1 {
+.div-form-register-client-title h1 {
     margin: 0px;
 }
 
-.div-form-register-car form {
+.div-form-register-client form {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .div-form-section {
@@ -57,7 +59,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 25vh;
+    height: 40vh;
     padding: 15px;
 }
 
@@ -100,7 +102,7 @@ main {
     border-radius: 0px;
 }
 
-.div-btn-section{
+.div-btn-section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -108,7 +110,7 @@ main {
     margin: 15px;
 }
 
-.div-sumbit-btn-section, .div-delete-btn-section{
+.div-sumbit-btn-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,11 +118,11 @@ main {
     margin: 3px;
 }
 
-.submit-btn, .delete-btn {
+.submit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 95%;
+    width: 50%;
     height: 40px;
     padding: 1px;
     background-color: transparent;
@@ -131,80 +133,8 @@ main {
     cursor: pointer;
 }
 
-.submit-btn:hover, .delete-btn:hover {
+.submit-btn:hover,
+.delete-btn:hover {
     background-color: black;
     color: white;
-}
-/* -------------------- Seção das Listas -------------------- */
-
-.div-table-vehicles-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 60vh;
-}
-
-.div-table-vehicles-section-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45%;
-    padding: 10px;
-    border-bottom: 2px solid var(--standart-gray-color);
-}
-
-#update-car-title-id {
-    display: none;
-}
-
-.div-table-vehicles-section-title h1 {
-    margin: 0px;
-}
-
-.div-table-vehicles-section-table {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    width: 50%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.div-table-vehicles-section-table table {
-    width: 100%;
-    height: 15vh;
-    border-collapse: collapse;
-}
-
-.div-table-vehicles-section-table table thead {
-    background-color: gray;
-}
-
-.div-table-vehicles-section-table table thead th {
-    width: 40px;
-    padding: 15px;
-    color: white;
-}
-
-.div-table-vehicles-section-table table tbody {
-    background-color: rgb(235, 235, 235);
-}
-
-.div-table-vehicles-section-table table tbody:nth-child(odd) {
-    background-color: rgb(230, 230, 230);
-}
-
-.div-table-vehicles-section-table table tbody:hover {
-    background-color: rgb(143, 143, 143);
-}
-
-.div-table-vehicles-section-table table tbody td {
-    text-align: center;
-    padding: 10px;
-}
-
-.selected {
-    background-color: rgb(143, 143, 143);
 }
