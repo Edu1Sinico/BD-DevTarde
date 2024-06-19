@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoroad - Home</title>
-    <link rel="stylesheet" href="../templates/fragmentsCSS/styleHeader.css">
-    <link rel="stylesheet" href="../templates/fragmentsCSS/styleFooter.css">
-    <link rel="stylesheet" href="../templates/styleHome.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleHeader.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleFooter.css">
+    <link rel="stylesheet" href="templates/styleHome.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -20,7 +20,7 @@
     <main>
         <!-- Seção banner -->
         <div class="div-banner-section">
-            <img src="../assets/banner/locadora-banner.png" alt="banner">
+            <img src="assets/banner/locadora-banner.png" alt="banner">
         </div>
         <!-- Seção sobre nós -->
         <div class="div-about-us" id="about-us">
@@ -52,7 +52,7 @@
             <div class="div-cards">
                 <div class="div-card-car">
                     <div class="div-car-img">
-                        <img src="../assets/carros-miniatura/polo.png" alt="carro">
+                        <img src="assets/carros-miniatura/polo.png" alt="carro">
                     </div>
                     <div class="div-car-info">
                         <div class="car-title">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="div-card-car">
                     <div class="div-car-img">
-                        <img src="../assets/carros-miniatura/onix.png" alt="carro">
+                        <img src="assets/carros-miniatura/onix.png" alt="carro">
                     </div>
                     <div class="div-car-info">
                         <div class="car-title">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="div-card-car">
                     <div class="div-car-img">
-                        <img src="../assets/carros-miniatura/mobi.png" alt="carro">
+                        <img src="assets/carros-miniatura/mobi.png" alt="carro">
                     </div>
                     <div class="div-car-info">
                         <div class="car-title">

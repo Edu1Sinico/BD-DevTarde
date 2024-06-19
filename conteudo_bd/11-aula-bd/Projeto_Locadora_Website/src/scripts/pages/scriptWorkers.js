@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Preenche o formulário com os dados da linha
             form.elements['id_funcionario'].value = rowData.id_funcionario;
-            form.elements['id_funcionario'].readOnly = true;
             form.elements['nome'].value = rowData.nome;
             form.elements['sobrenome'].value = rowData.sobrenome;
             form.elements['cargo'].value = rowData.cargo;
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("submit-btn-id").addEventListener('click', function () {
         document.getElementById("id_funcionario").value = "";
-        document.getElementById("id_funcionario").readOnly = false;
         document.getElementById("nome").value = "";
         document.getElementById("sobrenome").value = "";
         document.getElementById("cargo").value = "";

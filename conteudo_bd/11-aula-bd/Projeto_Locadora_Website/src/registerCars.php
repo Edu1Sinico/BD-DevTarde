@@ -1,5 +1,5 @@
 <?php
-include '../../controller/carrosController.php';
+include 'controller/carrosController.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,16 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoroad - Cadastrar Veículo</title>
-    <link rel="stylesheet" href="../../templates/fragmentsCSS/styleHeader.css">
-    <link rel="stylesheet" href="../../templates/fragmentsCSS/styleFooter.css">
-    <link rel="stylesheet" href="../../templates/pagesCSS/styleRegisterCar.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleHeader.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleFooter.css">
+    <link rel="stylesheet" href="templates/pagesCSS/styleRegisterCar.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Seção header -->
     <div class="div-header-import">
-        <?php include '../fragments/header.php'; ?>
+        <?php include 'fragments/header.php'; ?>
     </div>
 
     <!-- Seção principal -->
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Seção footer -->
     <div class="div-footer-import">
-        <?php include '../fragments/footer.php'; ?>
+        <?php include 'fragments/footer.php'; ?>
     </div>
 
 </body>

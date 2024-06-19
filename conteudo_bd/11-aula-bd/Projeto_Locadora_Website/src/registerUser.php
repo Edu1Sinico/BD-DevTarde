@@ -1,3 +1,14 @@
+<?php
+include 'controller/funcionariosController.php';
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['operation'] == 'cadastrar') {
+        $message = cadastrarCliente($pdo);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,20 +16,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoroad - Cadastro de Cliente</title>
-    <link rel="stylesheet" href="../../templates/fragmentsCSS/styleHeader.css">
-    <link rel="stylesheet" href="../../templates/fragmentsCSS/styleFooter.css">
-    <link rel="stylesheet" href="../../templates/pagesCSS/styleRegisterUsers.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleHeader.css">
+    <link rel="stylesheet" href="templates/fragmentsCSS/styleFooter.css">
+    <link rel="stylesheet" href="templates/pagesCSS/styleRegisterUsers.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Seção header -->
     <div class="div-header-import">
-        <?php include '../fragments/header.php'; ?>
+        <?php include 'fragments/header.php'; ?>
     </div>
 
     <main>
         <section class="div-form-register-client">
+            <!-- Exibe a mensagem de sucesso ou erro -->
+            <?php if ($message) : ?>
+                <div class="message">
+                    <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
+
 
             <div class="div-form-register-client-title">
                 <h1>Realize o seu cadastro!</h1>
@@ -27,7 +45,12 @@
             <form action="" method="post">
                 <div class="div-form-section">
                     <div class="div-form-section-left">
-                        <input class="input-text" type="number" min="0" name="id_cliente" placeholder="ID" readonly value="1">
+                        <?php
+                        $cliLast = listarUltimoCliente($pdo);
+                        $minIdcliente = $cliLast ? $cliLast : 0; // Defina um valor padrão caso a função retorne null
+
+                        ?>
+                        <input class="input-text" type="number" min="0" name="id_cliente" placeholder="ID" readonly value="<?php echo htmlspecialchars($minIdcliente, ENT_QUOTES, 'UTF-8') + 1; ?>">
                         <input class="input-text" type="text" name="nome" placeholder="Insira o seu nome" required>
                         <input class="input-text" type="text" name="sobrenome" placeholder="Insira o seu sobrenome" required>
                         <input class="input-text" type="email" name="email" placeholder="Insira o seu E-mail" required>
@@ -82,7 +105,7 @@
 
     <!-- Seção footer -->
     <div class="div-footer-import">
-        <?php include '../fragments/footer.php'; ?>
+        <?php include 'fragments/footer.php'; ?>
     </div>
 </body>
 

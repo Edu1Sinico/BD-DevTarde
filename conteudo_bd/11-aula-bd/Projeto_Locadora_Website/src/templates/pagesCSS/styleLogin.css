@@ -23,8 +23,80 @@ main {
     align-items: center;
 }
 
-.form-login{
+.form-login {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding: 20px;
+    width: 40vh;
+    height: 45vh;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgb(161, 161, 161);
+}
+
+.form-login .div-form-login-title {
+    text-align: center;
+    padding: 15px;
+}
+
+.form-login .div-form-login-title h1 {
+    margin: 0px;
+    font-size: 30.5px;
+    font-weight: 500;
+}
+
+.form-login .div-form-login-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 15px;
+    height: 25vh;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.input-section label {
+    font-weight: 500;
+}
+
+.input-section input {
+    margin: 5px;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+.form-login .div-form-login-btn {
+    padding: 15px;
+}
+
+.div-form-login-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-form-login-btn input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 30px;
+    padding: 1px;
+    background-color: transparent;
+    border-radius: 0px;
+    border: 1px solid black;
+    transition: all 0.3s ease-in-out;
+    font-size: smaller;
+    cursor: pointer;
+}
+
+.div-form-login-btn input:hover{
+    background-color: black;
+    color: white;
 }
