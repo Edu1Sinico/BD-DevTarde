@@ -15,20 +15,21 @@ function cadastrarCliente($pdo)
                 ':sobrenome' => $_POST['sobrenome'],
                 ':email' => $_POST['email'],
                 ':celular' => $_POST['celular'],
-                ':senha' => $_POST['senha'],
+                ':senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT),
                 ':estado' => $_POST['estado'],
                 ':cidade' => $_POST['cidade'],
                 ':endereco' => $_POST['endereco'],
+                ':tipo' => 'cliente' // Define o tipo padrão como cliente
             );
 
             // Insere um novo registro na tabela cliente
-            $stmt = $pdo->prepare('INSERT INTO cliente(id_cliente, nome, sobrenome, email, celular, senha, estado, cidade, endereco) VALUES (:id_cliente, :nome, :sobrenome, :email, :celular, :senha, :estado, :cidade, :endereco)');
+            $stmt = $pdo->prepare('INSERT INTO cliente(id_cliente, nome, sobrenome, email, celular, senha, estado, cidade, endereco, tipo) VALUES (:id_cliente, :nome, :sobrenome, :email, :celular, :senha, :estado, :cidade, :endereco, :tipo)');
             if ($stmt->execute($dados)) {
                 // Mensagem de saída
-                return 'cliente cadastrado com sucesso!';
+                return 'Cadastro realizado com sucesso!';
             }
         } catch (PDOException $e) {
-            return 'Erro ao cadastrar cliente: ' . $e->getMessage();
+            return 'Erro ao realizar o cadastro.';
         }
     } else {
         return 'Dados vazios.';

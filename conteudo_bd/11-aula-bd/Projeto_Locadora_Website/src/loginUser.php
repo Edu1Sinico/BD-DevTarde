@@ -1,3 +1,12 @@
+<?php
+include 'controller/loginController.php';
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $message = loginUser($pdo);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -28,6 +37,11 @@
             <div class="div-form-login-btn">
                 <input type="submit" value="Entrar">
             </div>
+            <?php if ($message) : ?>
+                <div class="message">
+                    <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
         </form>
     </main>
 </body>

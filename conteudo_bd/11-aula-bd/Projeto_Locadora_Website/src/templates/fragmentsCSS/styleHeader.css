@@ -48,6 +48,9 @@
     display: flex;
 }
 
+.div-btn-login-register a{
+    text-decoration: none;
+}
 .div-btn-login-register .div-login button, .div-register button{
     display: flex;
     align-items: center;

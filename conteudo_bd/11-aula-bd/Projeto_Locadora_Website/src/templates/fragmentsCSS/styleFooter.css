@@ -22,7 +22,6 @@
 }
 
 .footer-fragment{
-    top: 0;
     width: 100%;
     height: auto;
     display: flex;
@@ -75,6 +74,10 @@
     align-items: center;
     width: 15%;
     margin: 2.5px;
+}
+
+.div-contact-links-icons a{
+    color: var(--font-footer-color);
 }
 
 .div-footer-direitos-autorais{

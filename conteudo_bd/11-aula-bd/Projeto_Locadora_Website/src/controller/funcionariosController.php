@@ -20,17 +20,19 @@ function cadastrarFuncionario($pdo)
         try {
             // Configura as variáveis que serão inseridas
             $dados = array(
+                ':id_funcionario' => $_POST['id_funcionario'],
                 ':nome' => $_POST['nome'],
                 ':sobrenome' => $_POST['sobrenome'],
                 ':cargo' => $_POST['cargo'],
-                ':id_funcionario' => $_POST['id_funcionario'],
-                ':data_contratacao' => $_POST['data_contratacao'],
                 ':salario' => $_POST['salario'],
-                ':num_agencia' => $_POST['num_agencia']
+                ':data_contratacao' => $_POST['data_contratacao'],
+                ':num_agencia' => $_POST['num_agencia'],
+                ':senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT),
+                ':tipo' => 'funcionario' // Define o tipo padrão como funcionário
             );
 
-            // Insere um novo registro na tabela funcionário
-            $stmt = $pdo->prepare('INSERT INTO funcionarios(id_funcionario, nome, sobrenome, cargo, salario, data_contratacao, num_agencia) VALUES (:id_funcionario, :nome, :sobrenome, :cargo, :salario, :data_contratacao, :num_agencia)');
+            // Insere um novo registro na tabela funcionários
+            $stmt = $pdo->prepare('INSERT INTO funcionarios(id_funcionario, nome, sobrenome, cargo, salario, data_contratacao, num_agencia,senha, tipo) VALUES (:id_funcionario, :nome, :sobrenome, :cargo, :salario, :data_contratacao, :num_agencia, :senha, :tipo)');
             if ($stmt->execute($dados)) {
                 // Mensagem de saída
                 return 'Funcionário cadastrado com sucesso!';
@@ -110,5 +112,23 @@ function listarUltimoFuncionario($pdo)
         return $result ? $result['id_funcionario'] : null;
     } catch (PDOException $e) {
         return 'Erro ao listar o funcionário: ' . $e->getMessage();
+    }
+}
+
+// Método para listar o última agência
+function listarUltimaAgencia($pdo)
+{
+    try {
+        $stmt = $pdo->query('
+            SELECT a.id_agencia, c.nome AS cidade
+            FROM agencia a
+            JOIN cidade c ON a.id_cidade = c.id_cidade
+            ORDER BY a.id_agencia DESC
+            LIMIT 1
+        ');
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result : null;
+    } catch (PDOException $e) {
+        return 'Erro ao listar a agência: ' . $e->getMessage();
     }
 }

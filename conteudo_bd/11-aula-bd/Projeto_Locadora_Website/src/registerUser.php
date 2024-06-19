@@ -1,5 +1,5 @@
 <?php
-include 'controller/funcionariosController.php';
+include 'controller/clientesController.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -37,32 +37,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             <?php endif; ?>
 
-
             <div class="div-form-register-client-title">
                 <h1>Realize o seu cadastro!</h1>
             </div>
 
-            <form action="" method="post">
+            <form id="register-form" action="" method="post" onsubmit="return validateForm()">
                 <div class="div-form-section">
                     <div class="div-form-section-left">
                         <?php
                         $cliLast = listarUltimoCliente($pdo);
                         $minIdcliente = $cliLast ? $cliLast : 0; // Defina um valor padrão caso a função retorne null
-
                         ?>
+                        <input type="hidden" name="operation" value="cadastrar" id="operation-id">
                         <input class="input-text" type="number" min="0" name="id_cliente" placeholder="ID" readonly value="<?php echo htmlspecialchars($minIdcliente, ENT_QUOTES, 'UTF-8') + 1; ?>">
-                        <input class="input-text" type="text" name="nome" placeholder="Insira o seu nome" required>
-                        <input class="input-text" type="text" name="sobrenome" placeholder="Insira o seu sobrenome" required>
-                        <input class="input-text" type="email" name="email" placeholder="Insira o seu E-mail" required>
-                        <input class="input-text" type="text" name="celular" placeholder="Insira o seu Nº do Celular" required>
+                        <input class="input-text" type="text" name="nome" placeholder="Insira o seu nome" required maxlength="125">
+                        <input class="input-text" type="text" name="sobrenome" placeholder="Insira o seu sobrenome" required maxlength="125">
+                        <input class="input-text" type="email" name="email" placeholder="Insira o seu E-mail" required maxlength="100">
+                        <input class="input-text" type="text" name="celular" placeholder="Insira o seu Nº do Celular" required maxlength="15">
                     </div>
                     <div class="div-form-section-right">
-                        <input class="input-text" type="password" name="senha" placeholder="Insira uma senha" required>
-                        <input class="input-text" type="password" placeholder="Confirmar Senha" required>
+                        <input class="input-text" type="password" name="senha" placeholder="Insira uma senha" required maxlength="25">
+                        <input class="input-text" type="password" name="confirmar_senha" placeholder="Confirmar Senha" required maxlength="25">
                         <div class="div-select-box-type">
-                            <!-- <label for="estado">Estado:</label> -->
-                            <select name="estado">
+                            <select name="estado" required>
                                 <option value="">Selecione um Estado</option>
+                                <!-- opções dos estados -->
+                                <option value="AC">AC</option>
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
                                 <option value="AP">AP</option>
@@ -91,10 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <option value="TO">TO</option>
                             </select>
                         </div>
-                        <input class="input-text" type="text" name="cidade" placeholder="Insira a sua Cidade" required>
-                        <input class="input-text" type="text" name="endereco" placeholder="Insira o seu Endereço" required>
+                        <input class="input-text" type="text" name="cidade" placeholder="Insira a sua Cidade" required maxlength="255">
+                        <input class="input-text" type="text" name="endereco" placeholder="Insira o seu Endereço" required maxlength="255">
                     </div>
-
                 </div>
                 <div class="div-sumbit-btn-section">
                     <input type="submit" value="Enviar" class="submit-btn">
@@ -107,6 +106,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="div-footer-import">
         <?php include 'fragments/footer.php'; ?>
     </div>
+
+    <!-- JavaScript de validação -->
+    <script>
+        function validateForm() {
+            // Validação de senha
+            const senha = document.querySelector('input[name="senha"]');
+            const confirmarSenha = document.querySelector('input[name="confirmar_senha"]');
+            if (senha.value !== confirmarSenha.value) {
+                alert("As senhas não coincidem.");
+                return false;
+            }
+
+            // Formatação do telefone
+            const celular = document.querySelector('input[name="celular"]');
+            celular.value = celular.value.replace(/[^\d]/g, '');
+
+            // Validação de comprimento dos campos
+            const campos = [{
+                    nome: 'nome',
+                    max: 125
+                },
+                {
+                    nome: 'sobrenome',
+                    max: 125
+                },
+                {
+                    nome: 'email',
+                    max: 100
+                },
+                {
+                    nome: 'cidade',
+                    max: 255
+                },
+                {
+                    nome: 'endereco',
+                    max: 255
+                },
+                {
+                    nome: 'senha',
+                    max: 25
+                },
+                {
+                    nome: 'confirmar_senha',
+                    max: 25
+                }
+            ];
+
+            for (const campo of campos) {
+                const input = document.querySelector(`input[name="${campo.nome}"]`);
+                if (input.value.length > campo.max) {
+                    alert(`O campo ${campo.nome} não pode exceder ${campo.max} caracteres.`);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
 </body>
 
 </html>

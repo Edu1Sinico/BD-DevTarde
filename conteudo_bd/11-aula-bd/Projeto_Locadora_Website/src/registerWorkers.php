@@ -2,6 +2,12 @@
 include 'controller/funcionariosController.php';
 $message = '';
 
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['user_tipo'] != 'funcionario') {
+    header("Location: ../");
+    exit();
+}
+
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['operation'] == 'cadastrar') {
         $message = cadastrarFuncionario($pdo);
@@ -9,6 +15,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = atualizarFuncionario($pdo);
     }
 }
+
 
 ?>
 
@@ -63,6 +70,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="div-form-section-right">
                         <input class="input-text" type="number" min="0" name="salario" placeholder="Insira o salário do funcionário" required id="salario">
                         <input class="input-text" type="date" name="data_contratacao" id="data_contratacao">
+                        <input class="input-text" type="text" name="senha" placeholder="Insira a senha" required id="senha">
                         <div class="div-select-box-type">
                             <select name="num_agencia" id="num_agencia">
                                 <option>Agência</option>

@@ -2,6 +2,12 @@
 include 'controller/carrosController.php';
 $message = '';
 
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['user_tipo'] != 'funcionario') {
+    header("Location: ../");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = cadastrarVeiculo($pdo);
 }
