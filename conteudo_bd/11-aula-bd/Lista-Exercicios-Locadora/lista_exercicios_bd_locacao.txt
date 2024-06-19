@@ -1,0 +1,408 @@
+-- Exercício 1 - SELECT
+
+-- 1) Selecione todos os carros disponíveis na locadora.
+
+SELECT * from carro;
+
+-- 2) Liste todos os clientes que alugaram um carro nos últimos 3 meses.
+
+SELECT * FROM locacao;
+SELECT * FROM cliente;
+
+SELECT c.nome, l.data_locacao 
+FROM locacao l INNER JOIN cliente c 
+ON l.id_cliente = c.id_cliente 
+WHERE l.data_locacao BETWEEN '2024-04-01' AND '2024-05-30';
+
+-- 3) Mostre os funcionários que estão cadastrados na agência "X".
+
+SELECT * FROM Agencia;
+SELECT * FROM funcionarios;
+
+SELECT f.nome, a.cidade as agencia
+FROM funcionarios f INNER JOIN Agencia a
+ON f.num_agencia = a.num_agencia
+WHERE f.num_agencia = 2;
+
+-- 4) Exiba os pagamentos realizados por um cliente específico.
+
+SELECT * FROM pagamento;
+SELECT * FROM cliente;
+
+SELECT p.valor, p.status_pagamento, p.forma_pagamento, c.nome
+FROM pagamento p INNER JOIN cliente c
+ON p.id_comprovante = c.id_cliente
+WHERE c.id_cliente = 102;
+
+-- 5) Liste os carros que precisam de manutenção.
+
+SELECT * from manutencao;
+
+-- 6) Escreva uma consulta para encontrar os clientes que alugaram carros mais de uma vez
+-- usando uma subconsulta correlacionada.
+
+SELECT * FROM cliente;
+SELECT * FROM locacao;
+
+SELECT c.Nome, COUNT(l.Id_locacao) AS Total_Alugueis
+FROM Cliente c
+INNER JOIN Locacao l ON c.Id_cliente = l.Id_cliente
+WHERE (
+    SELECT COUNT(*)
+    FROM Locacao
+    WHERE Id_cliente = c.Id_cliente
+) > 1
+GROUP BY c.Nome;
+
+
+-- 7) Identifique os carros alugados por clientes que vivem na mesma cidade que um
+-- determinado funcionário.
+
+SELECT * FROM funcionarios;
+SELECT * FROM cliente;
+SELECT * FROM carro;
+SELECT * FROM locacao;
+
+SELECT car.modelo, cli.nome AS nome_cliente, fun.nome as nome_funcionario, cli.cidade FROM carro car
+INNER JOIN locacao loc ON car.id_carro = loc.id_carro
+INNER JOIN cliente cli ON loc.id_cliente = cli.id_cliente
+INNER JOIN funcionarios fun ON cli.cidade = fun.cidade
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 2 - UPDATE
+
+-- 1) Atualize o preço do aluguel de todos os carros da marca "Toyota".
+
+ALTER TABLE Carro
+ADD COLUMN Preco_Aluguel Money;
+
+ALTER TABLE Carro 
+ADD COLUMN Marca Varchar(50);
+
+UPDATE Carro
+SET Preco_Aluguel = 1200.00
+WHERE marca = 'Toyota'; 
+
+
+SELECT * FROM carro;
+
+
+-- 2) Modifique a data de retorno de um carro alugado por um cliente.
+
+UPDATE Locacao
+SET data_devolucao = '2024-04-09'
+WHERE id_cliente = 107;
+
+SELECT * FROM Locacao;
+
+-- 3) Atualize o status de manutenção de um carro após ter sido consertado.
+
+ALTER TABLE Carro 
+ADD COLUMN status_manutencao BOOLEAN; -- Se for True, o carro está consertado.
+
+UPDATE Carro
+SET status_manutencao = True
+WHERE id_carro = 6;
+
+SELECT * FROM carro;
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 3 - ALTER TABLE
+
+-- 1) Adicione uma nova coluna à tabela de Carro para armazenar o status de
+-- disponibilidade.
+
+ALTER TABLE Carro
+ADD COLUMN disponibilidade BOOLEAN;
+
+SELECT * FROM Carro;
+
+-- 2) Modifique o tipo de dados de uma coluna na tabela de Pagamento.
+
+ALTER TABLE pagamento 
+ALTER COLUMN pagamento TYPE INT;
+
+SELECT * FROM pagamento;
+
+-- 3) Remova uma coluna não utilizada da tabela de Cliente.
+
+SELECT * FROM Cliente;
+
+ALTER Table cliente ADD COLUMN teste;
+
+ALTER TABLE Cliente
+DROP COLUMN teste;
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 4 - JOIN
+
+-- 1)Liste todos os alugueis de carros, incluindo o nome do cliente, modelo do carro e data
+-- de aluguel.
+
+SELECT c.Nome AS Nome_Cliente, ca.Modelo AS Modelo_Carro, l.Data_locacao AS Data_Aluguel
+FROM Locacao l
+JOIN Cliente c ON l.Id_cliente = c.Id_cliente
+JOIN Carro ca ON l.Id_carro = ca.Id_carro;
+
+
+-- 2) Mostre os pagamentos feitos por clientes, incluindo o nome do cliente e o valor pago.
+
+SELECT c.Nome AS Nome_Cliente, p.Valor AS Valor_Pago
+FROM Pagamento p
+JOIN Cliente c ON p.Id_pagamento = c.Id_pagamento;
+
+
+-- 3) Exiba os feedbacks deixados pelos clientes, juntamente com o nome do cliente e o
+-- modelo do carro alugado.
+
+SELECT c.Nome AS Nome_Cliente, ca.Modelo AS Modelo_Carro, f.Comentario AS Feedback
+FROM Feedback f
+JOIN Cliente c ON f.Id_cliente = c.Id_cliente
+JOIN Locacao l ON f.Id_cliente = l.Id_cliente
+JOIN Carro ca ON l.Id_carro = ca.Id_carro;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 5 - INNER JOIN
+
+-- 1) Liste os carros disponíveis na agência "X".
+
+SELECT c.*
+FROM Carro c
+INNER JOIN Agencia a ON c.Num_Agencia = a.Num_Agencia
+WHERE a.Cidade = 'X' AND c.Disponibilidade = true;
+
+-- 2) Mostre todos os alugueis de carros feitos por clientes que estão na cidade "Y".
+
+SELECT l.*
+FROM Locacao l
+INNER JOIN Cliente c ON l.Id_cliente = c.Id_cliente
+INNER JOIN Agencia a ON c.Cidade = a.Cidade
+WHERE a.Cidade = 'Y';
+
+
+-- 3) Exiba os funcionários que trabalham em agências que têm pelo menos um carro da
+-- marca "Toyota".
+
+SELECT f.*
+FROM Funcionarios f
+INNER JOIN Agencia a ON f.Num_Agencia = a.Num_Agencia
+INNER JOIN Carro c ON a.Num_Agencia = c.Num_Agencia
+WHERE c.Marca = 'Toyota';
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 6 - LEFT JOIN
+
+-- 1) Liste todos os carros e, se disponível, mostre o feedback associado a cada carro.
+
+SELECT c.*, f.Comentario AS Feedback
+FROM Carro c
+LEFT JOIN Locacao l ON c.Id_carro = l.Id_carro
+LEFT JOIN Feedback f ON l.Id_cliente = f.Id_cliente;
+
+
+-- 2) Mostre todos os clientes, incluindo aqueles que ainda não alugaram nenhum carro.
+
+SELECT c.*, COUNT(l.Id_locacao) AS Total_Alugueis
+FROM Cliente c
+LEFT JOIN Locacao l ON c.Id_cliente = l.Id_cliente
+GROUP BY c.Id_cliente;
+
+
+-- 3) Exiba todas as agências e, se houver, o número total de carros disponíveis em cada
+-- agência.
+
+SELECT a.*, COUNT(c.Id_carro) AS Total_Carros_Disponiveis
+FROM Agencia a
+LEFT JOIN Carro c ON a.Num_Agencia = c.Num_Agencia AND c.Disponibilidade = true
+GROUP BY a.Num_Agencia;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 7 - RIGHT JOIN
+
+-- 1) Liste todos os feedbacks deixados pelos clientes, incluindo aqueles que não estão
+-- associados a nenhum aluguel de carro.
+
+SELECT f.*, l.Modelo AS Modelo_Carro
+FROM Feedback f
+RIGHT JOIN Locacao l ON f.Id_cliente = l.Id_cliente;
+
+
+-- 2) Mostre todos os carros, incluindo aqueles que ainda não foram alugados por nenhum
+-- cliente.
+
+SELECT f.*, l.Modelo AS Modelo_Carro
+FROM Feedback f
+RIGHT JOIN Locacao l ON f.Id_cliente = l.Id_cliente;
+
+
+-- 3) Exiba todas as manutenções realizadas, incluindo aquelas que não estão associadas a
+-- nenhum carro específico.
+
+SELECT m.*, c.Modelo AS Modelo_Carro
+FROM Manutencao m
+RIGHT JOIN Carro c ON m.Id_Manutencao = c.Id_carro;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 8 - Subconsultas (Subqueries)
+
+-- 1) Escreva uma consulta para encontrar os clientes que alugaram carros mais de uma
+-- vez.
+
+SELECT c.Nome AS Nome_Cliente
+FROM Cliente c
+WHERE (
+    SELECT COUNT(*)
+    FROM Locacao l
+    WHERE l.Id_cliente = c.Id_cliente
+) > 1;
+
+
+-- 2) Identifique os carros mais alugados por clientes que deram feedback positivo.
+
+SELECT c.Modelo AS Modelo_Carro, COUNT(*) AS Total_Alugueis
+FROM Carro c
+JOIN Locacao l ON c.Id_carro = l.Id_carro
+JOIN Feedback f ON l.Id_cliente = f.Id_cliente
+WHERE f.Avaliacao > 3
+GROUP BY c.Modelo
+ORDER BY Total_Alugueis DESC
+LIMIT 1;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 9 - Agregações
+
+-- 1) Calcule o total de pagamentos recebidos pela locadora em um determinado período.
+
+SELECT SUM(Valor) AS Total_Pagamentos
+FROM Pagamento
+WHERE Data_Pagamento BETWEEN '2024-01-01' AND '2024-03-31';
+
+-- 2) Determine a média de dias que os carros passam em manutenção antes de serem
+-- novamente disponibilizados para aluguel.
+
+SELECT AVG(DATEDIFF(Manutencao, Data_Devolucao)) AS Media_Dias_Manutencao
+FROM Locacao l
+JOIN Carro c ON l.Id_carro = c.Id_carro
+JOIN Manutencao m ON c.Id_carro = m.Id_carro;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 9.1 - Agregações Simples
+
+-- 1) Calcule o número total de carros disponíveis na locadora.
+
+SELECT COUNT(*) AS Total_Carros_Disponiveis
+FROM Carro
+WHERE Disponibilidade = true;
+
+-- 2) Determine o valor total arrecadado com alugueis no último trimestre.
+
+SELECT SUM(Valor_Total) AS Total_Arrecadado
+FROM Locacao
+WHERE Data_locacao BETWEEN '2024-01-01' AND '2024-03-31';
+
+-- 3) Encontre o preço médio de aluguel por dia de todos os carros disponíveis.
+
+SELECT AVG(Valor_Total / DATEDIFF(Data_Devolucao, Data_locacao)) AS Preco_Medio_Aluguel_Dia
+FROM Locacao
+WHERE Disponibilidade = true;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 9.2 - Agregações com Agrupamento
+
+-- 1) Agrupe os carros por modelo e conte quantos carros há de cada modelo na
+-- locadora.
+
+SELECT Modelo, COUNT(*) AS Quantidade
+FROM Carro
+GROUP BY Modelo;
+
+-- 2) Determine o valor total de alugueis por mês para fins de análise de
+-- sazonalidade.
+
+SELECT EXTRACT(MONTH FROM Data_locacao) AS Mes, SUM(Valor_Total) AS Total_Alugueis
+FROM Locacao
+GROUP BY Mes;
+
+-- 3) Agrupe os pagamentos por método de pagamento e calcule a soma de
+-- pagamentos para cada método.
+
+SELECT Forma_Pagamento, SUM(Valor) AS Total_Pagamentos
+FROM Pagamento
+GROUP BY Forma_Pagamento;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 9.3 - Agregações com Filtros
+
+-- 1) Calcule o número total de carros disponíveis apenas na agência "X".
+
+SELECT COUNT(*) AS Total_Carros_Disponiveis
+FROM Carro c
+JOIN Agencia a ON c.Num_Agencia = a.Num_Agencia
+WHERE a.Cidade = 'X' AND c.Disponibilidade = true;
+
+-- 2) Determine o valor total arrecadado com alugueis apenas dos clientes que
+-- estão na cidade "Y".
+
+SELECT SUM(l.Valor_Total) AS Total_Arrecadado
+FROM Locacao l
+JOIN Cliente c ON l.Id_cliente = c.Id_cliente
+WHERE c.Cidade = 'Y';
+
+-- 3) Encontre a média de dias que os carros da marca "Toyota" passam
+-- alugados.
+
+SELECT AVG(DATEDIFF(Data_Devolucao, Data_locacao)) AS Media_Dias_Aluguel
+FROM Locacao l
+JOIN Carro c ON l.Id_carro = c.Id_carro
+WHERE c.Marca = 'Toyota';
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 9.4 - Agregações com Condições Complexas
+
+-- 1) Calcule o número total de alugueis de carros que excederam um
+-- determinado valor.
+
+SELECT COUNT(*) AS Total_Alugueis_Excedentes
+FROM Locacao
+WHERE Valor_Total > 500;
+
+-- 2) Determine o valor total de pagamentos recebidos apenas dos clientes que
+-- já alugaram mais de uma vez.
+
+SELECT SUM(p.Valor) AS Total_Pagamentos_Repeat
+FROM Pagamento p
+JOIN (
+    SELECT Id_cliente
+    FROM Locacao
+    GROUP BY Id_cliente
+    HAVING COUNT(*) > 1
+) AS repeat_clients ON p.Id_cliente = repeat_clients.Id_cliente;
+
+-- 3) Encontre a média de dias que os carros passam em manutenção apenas se
+-- o custo da manutenção for superior a um determinado valor.
+
+SELECT AVG(DATEDIFF(Manutencao, Data_Devolucao)) AS Media_Dias_Manutencao_Custo_Alto
+FROM Locacao l
+JOIN Carro c ON l.Id_carro = c.Id_carro
+JOIN Manutencao m ON c.Id_carro = m.Id_carro
+WHERE m.Custo > 500;
+
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Exercício 10 - Indexação
+
+-- 1) Explique como e por que você indicaria uma determinada coluna em uma tabela.
+
+-- 2) Compare o desempenho de consultas em tabelas indexadas e não indexadas.
+
+

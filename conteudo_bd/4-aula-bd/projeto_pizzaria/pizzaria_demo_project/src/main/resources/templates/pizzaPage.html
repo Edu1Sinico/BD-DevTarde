@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{style.css}">
+    <title>Pizzaria - Controle de Pizzas</title>
+</head>
+
+<body>
+    <div th:insert="~{fragmentos/header :: header}"></div>
+
+    <section id="main-content">
+        <h2>Lista de Pizzas Cadastradas</h2>
+        <ul class="ul-list-pizzas">
+            <div th:insert="~{fragmentos/listaPizza :: list-pizza}">.</div>
+        </ul>
+        <!-- <div class="search-pizza-section">
+            <form action="" class="search-pizza-form">
+                <input type="text" name="sabor_pizza">
+                <input type="submit" value="Enviar">
+            </form>
+        </div> -->
+        <div class="register-pizza-section">
+            <div class="register-pizza-div">
+                <form action="cadastro-pizza" method="post">
+                    <div class="cadastro-pizza-title">
+                        <h1>Cadastrar Pizzas</h1>
+                    </div>
+                    <div class="cadastro-pizza-form-section">
+                        <div class="cad-pizza-form-div-1">
+                            <div class="cadastro-pizza-1 cad-pizza-div">
+                                <label>Sabor da Pizza:</label><br>
+                                <input type="text" name="sabor_pizza" maxlength="30"
+                                    placeholder="Digite o Sabor da Pizza">
+                            </div>
+                            <div class="cadastro-pizza-2 cad-pizza-div">
+                                <labeL>Tamanho:</labeL><br>
+                                <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="P"><label
+                                    for="cTamanho">P</label><br>
+                                <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="M"><label
+                                    for="cTamanho">M</label><br>
+                                <input type="radio" name="tamanho_pizza" id="cTamanho_id" value="G"><label
+                                    for="cTamanho">G</label>
+                            </div>
+                            <div class="cadastro-pizza-3 cad-pizza-div">
+                                <labeL>Valor:</labeL><br>
+                                <input type="text" maxlength="10" placeholder="Digite o Valor" name="valor_pizza">
+                            </div>
+                            <div class="cadastro-pizza-input cad-pizza-div">
+                                <input type="submit" value="Enviar">
+                            </div>
+                        </div>
+                        <div class="cad-pizza-form-div-img">
+                            <img th:src="@{assets/pizza.png}"alt="pizza">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Adicione mais pizzas conforme necessário -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../static/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+24/05/2024 - Atividade Somativa 2
+
+===============================================================================================
+Incluir tabela de reservas: Uma tabela para registrar as reservas de veículos pelos
+clientes, incluindo informações como data de reserva, data de devolução, veículo
+reservado, cliente que fez a reserva, etc.
+
+CREATE TABLE reservas (
+  id_reserva INT PRIMARY KEY,
+  data_reserva DATE NOT NULL,
+  id_devolucao INT,
+  id_carro INT,
+  id_cliente INT,
+  FOREIGN KEY(id_devolucao) REFERENCES devolucao (id_devolucao),
+  FOREIGN KEY(id_carro) REFERENCES carro (id_carro),
+  FOREIGN KEY(id_cliente) REFERENCES cliente (id_cliente)	
+);
+
+===============================================================================================
+Exercícios:
+
+### Seleções Simples (SELECT sem condição):
+
+1. Selecione todos os clientes cadastrados na locadora.
+
+	SELECT * FROM cliente;
+
+4. Exiba todos os funcionários da locadora.
+
+	SELECT * FROM funcionarios;
+
+### Seleções com Condições (SELECT com condições):
+
+5. Encontre os clientes que alugaram um carro específico.
+
+	SELECT Cliente.nome, Cliente.sobrenome
+	FROM Cliente
+	INNER JOIN Locacao ON Cliente.id_cliente = Locacao.Id_cliente
+	WHERE locacao.id_carro = 1;
+
+6. Liste os carros alugados por um cliente específico.
+
+	SELECT Carro.Modelo, Carro.Placa, Carro.Tipo
+	FROM Carro
+	INNER JOIN Locacao ON Carro.Id_carro = Locacao.Id_carro
+	WHERE Locacao.Id_cliente = 2;
+
+### Junções com LEFT JOIN e RIGHT JOIN:
+
+12. Liste todos os clientes e os carros que eles alugaram, incluindo clientes que não
+realizaram nenhum aluguel.
+
+	SELECT Cliente.Nome, Cliente.Sobrenome, Carro.Modelo, Carro.Placa, Carro.Tipo
+	FROM Cliente
+	LEFT JOIN Locacao ON Cliente.Id_cliente = Locacao.Id_cliente
+	LEFT JOIN Carro ON Locacao.Id_cliente = Carro.Id_cliente;
+
+14. Exiba todas as reservas feitas, incluindo aquelas sem carros reservados.
+
+	SELECT reservas.id_reserva, reservas.data_reserva, carro.id_carro, carro.modelo, carro.placa, carro.tipo, reservas.id_cliente
+	FROM reservas
+	LEFT JOIN carro ON reservas.id_carro = carro.id_carro;
+
+	
