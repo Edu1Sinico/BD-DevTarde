@@ -59,28 +59,19 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php
                         $funcsLast = listarUltimoFuncionario($pdo);
                         $minIdFuncionario = $funcsLast ? $funcsLast : 0; // Defina um valor padrão caso a função retorne null
-
                         ?>
                         <input type="hidden" name="operation" value="cadastrar" id="operation-id">
                         <input class="input-text" type="number" min="1" name="id_funcionario" placeholder="Insira o ID do funcionário" readonly id="id-funcionario" value="<?php echo htmlspecialchars($minIdFuncionario, ENT_QUOTES, 'UTF-8') + 1; ?>">
                         <input class="input-text" type="text" name="nome" placeholder="Insira o nome do funcionário" required id="nome">
                         <input class="input-text" type="text" name="sobrenome" placeholder="Insira o sobrenome do funcionário" required id="sobrenome">
                         <input class="input-text" type="text" name="cargo" placeholder="Insira o cargo do funcionário" required id="cargo">
+                        <input class="input-text" type="password" name="senha" placeholder="Insira a senha do funcionário" id="senha">
                     </div>
                     <div class="div-form-section-right">
                         <input class="input-text" type="number" min="0" name="salario" placeholder="Insira o salário do funcionário" required id="salario">
                         <input class="input-text" type="date" name="data_contratacao" id="data_contratacao">
-                        <input class="input-text" type="text" name="senha" placeholder="Insira a senha" required id="senha">
-                        <div class="div-select-box-type">
-                            <select name="num_agencia" id="num_agencia">
-                                <option>Agência</option>
-                                <?php if ($ultimaAgencia) : ?>
-                                    <option value="<?php echo htmlspecialchars($ultimaAgencia['id_agencia'], ENT_QUOTES, 'UTF-8'); ?>">
-                                        <?php echo htmlspecialchars($ultimaAgencia['cidade'], ENT_QUOTES, 'UTF-8'); ?>
-                                    </option>
-                                <?php endif; ?>
-                            </select>
-                        </div>
+                        <input class="input-text" type="email" name="email" placeholder="Insira o e-mail do funcionário" required id="email">
+                        <input class="input-text" type="number" min="1" name="num_agencia" placeholder="Insira o ID da agência" required id="num_agencia">
                     </div>
                 </div>
                 <div class="div-btn-section">
@@ -109,6 +100,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                             <th>Sobrenome</th>
                             <th>Cargo</th>
                             <th>Salário</th>
+                            <th>E-mail</th>
                             <th>Data de contratação</th>
                             <th>Nº Agência</th>
                         </tr>
@@ -128,6 +120,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <td><?php echo $func['sobrenome']; ?></td>
                                 <td><?php echo $func['cargo']; ?></td>
                                 <td><?php echo $func['salario']; ?></td>
+                                <td><?php echo $func['email']; ?></td>
                                 <td><?php echo $func['data_contratacao']; ?></td>
                                 <td><?php echo $func['num_agencia']; ?></td>
                             </tr>

@@ -27,12 +27,13 @@ function cadastrarFuncionario($pdo)
                 ':salario' => $_POST['salario'],
                 ':data_contratacao' => $_POST['data_contratacao'],
                 ':num_agencia' => $_POST['num_agencia'],
-                ':senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT),
+                ':senha' => $_POST['senha'],
+                ':email' => $_POST['email'],
                 ':tipo' => 'funcionario' // Define o tipo padrão como funcionário
             );
 
             // Insere um novo registro na tabela funcionários
-            $stmt = $pdo->prepare('INSERT INTO funcionarios(id_funcionario, nome, sobrenome, cargo, salario, data_contratacao, num_agencia,senha, tipo) VALUES (:id_funcionario, :nome, :sobrenome, :cargo, :salario, :data_contratacao, :num_agencia, :senha, :tipo)');
+            $stmt = $pdo->prepare('INSERT INTO funcionarios(id_funcionario, nome, sobrenome, cargo, salario, data_contratacao, num_agencia,senha, tipo, email) VALUES (:id_funcionario, :nome, :sobrenome, :cargo, :salario, :data_contratacao, :num_agencia, :senha, :tipo, :email)');
             if ($stmt->execute($dados)) {
                 // Mensagem de saída
                 return 'Funcionário cadastrado com sucesso!';
@@ -75,10 +76,12 @@ function atualizarFuncionario($pdo)
                 ':cargo' => $_POST['cargo'],
                 ':data_contratacao' => $_POST['data_contratacao'],
                 ':salario' => $_POST['salario'],
-                ':num_agencia' => $_POST['num_agencia']
+                ':num_agencia' => $_POST['num_agencia'],
+                ':email' => $_POST['email']
             );
+
             // atualiza o registro do funcionário na tabela funcionário
-            $stmt = $pdo->prepare('UPDATE funcionarios SET nome = :nome, sobrenome = :sobrenome, cargo = :cargo, data_contratacao = :data_contratacao, salario = :salario, num_agencia = :num_agencia WHERE id_funcionario = :id_funcionario');
+            $stmt = $pdo->prepare('UPDATE funcionarios SET nome = :nome, sobrenome = :sobrenome, cargo = :cargo, data_contratacao = :data_contratacao, salario = :salario, num_agencia = :num_agencia, email = :email WHERE id_funcionario = :id_funcionario');
             if ($stmt->execute($dados)) {
                 // Mensagem de saída
                 return 'Funcionário atualizado com sucesso!';
@@ -112,23 +115,5 @@ function listarUltimoFuncionario($pdo)
         return $result ? $result['id_funcionario'] : null;
     } catch (PDOException $e) {
         return 'Erro ao listar o funcionário: ' . $e->getMessage();
-    }
-}
-
-// Método para listar o última agência
-function listarUltimaAgencia($pdo)
-{
-    try {
-        $stmt = $pdo->query('
-            SELECT a.id_agencia, c.nome AS cidade
-            FROM agencia a
-            JOIN cidade c ON a.id_cidade = c.id_cidade
-            ORDER BY a.id_agencia DESC
-            LIMIT 1
-        ');
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result ? $result : null;
-    } catch (PDOException $e) {
-        return 'Erro ao listar a agência: ' . $e->getMessage();
     }
 }

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <header class="header-fragment">
@@ -22,6 +24,12 @@ session_start();
                             <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); ?></span>
                             <a href="controller/logoutController.php"><button class="logout-btn">Sair</button></a>
                         </div>
+                        <?php if ($_SESSION['user_tipo'] == 'funcionario') : ?>
+                            <div class="div-extra-links">
+                                <a href="../registerCars.php"><button class="extra-btn">Cadastro de Veículos</button></a>
+                                <a href="../registerWorkers.php"><button class="extra-btn">Cadastro de Funcionários</button></a>
+                            </div>
+                        <?php endif; ?>
                     <?php else : ?>
                         <div class="div-login">
                             <a href="../loginUser.php"><button class="login-btn">Login</button></a>
@@ -39,10 +47,6 @@ session_start();
                     <li><a href="../">Veículos</a></li>
                     <li><a href="../">Nossas Lojas</a></li>
                     <li><a href="../">Fale Conosco</a></li>
-                    <?php if ($_SESSION['user_tipo'] == 'funcionario') : ?>
-                        <li><a href="../registerCars.php">Cadastro de Veículos</a></li>
-                        <li><a href="../registerWorkers.php">Cadastro de Funcionários</a></li>
-                    <?php endif; ?>
                 </ul>
             </nav>
         </div>

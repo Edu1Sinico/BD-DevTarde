@@ -15,7 +15,7 @@ function cadastrarCliente($pdo)
                 ':sobrenome' => $_POST['sobrenome'],
                 ':email' => $_POST['email'],
                 ':celular' => $_POST['celular'],
-                ':senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT),
+                ':senha' => $_POST['senha'],
                 ':estado' => $_POST['estado'],
                 ':cidade' => $_POST['cidade'],
                 ':endereco' => $_POST['endereco'],

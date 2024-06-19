@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 sobrenome: cells[2].innerText,
                 cargo: cells[3].innerText,
                 salario: cells[4].innerText,
-                data_contratacao: cells[5].innerText,
-                num_agencia: cells[6].innerText
+                email: cells[5].innerText,
+                data_contratacao: cells[6].innerText,
+                num_agencia: cells[7].innerText
             };
 
             // Preenche o formulário com os dados da linha
@@ -37,6 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
             form.elements['salario'].value = rowData.salario;
             form.elements['data_contratacao'].value = rowData.data_contratacao;
             form.elements['num_agencia'].value = rowData.num_agencia;
+            form.elements['email'].value = rowData.email;
+
+            // Esconder o campo de senha ao atualizar
+            document.getElementById("senha").style.display = "none";
             document.getElementById("submit-btn-id").value = "Atualizar";
             document.getElementById("delete-btn-section-id").style.display = "flex";
             document.getElementById("operation-id").value = "atualizar";
@@ -45,33 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById("submit-btn-id").addEventListener('click', function () {
-        document.getElementById("id_funcionario").value = "";
-        document.getElementById("nome").value = "";
-        document.getElementById("sobrenome").value = "";
-        document.getElementById("cargo").value = "";
-        document.getElementById("salario").value = "";
-        document.getElementById("data_contratacao").value = "";
-        document.getElementById("num_agencia").value = "";
-        document.getElementById("submit-btn-id").value = "Enviar";
-        document.getElementById("delete-btn-section-id").style.display = "none";
-        document.getElementById("register-worker-title-id").style.display = "block";
-        document.getElementById("update-worker-title-id").style.display = "none";
-        if (!form.elements['id_funcionario'].value) {
-            document.getElementById("operation-id").value = "cadastrar";
-        }
-    });
-
-    document.getElementById("submit-btn-id").addEventListener('click', function () {
-        idField.disabled = false;
-        if (operationField.value === 'excluir') {
-            operationField.value = 'cadastrar';
+    form.addEventListener('submit', function (event) {
+        const operation = operationField.value;
+        if (operation === 'cadastrar' && !idField.value) {
+            event.preventDefault();
+            alert('Por favor, preencha todos os campos.');
         }
     });
 
     deleteBtn.addEventListener('click', function () {
         if (confirm('Você tem certeza que deseja excluir este funcionário?')) {
-            idField.disabled = false;
             operationField.value = 'excluir';
             form.submit();
         }

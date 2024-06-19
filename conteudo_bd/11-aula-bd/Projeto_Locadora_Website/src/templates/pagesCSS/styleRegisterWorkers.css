@@ -107,6 +107,7 @@ main {
     justify-content: space-evenly;
     width: 100%;
     margin: 15px;
+    margin-top: 5vh;
 }
 
 .div-sumbit-btn-section, .div-delete-btn-section{
