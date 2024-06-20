@@ -3,18 +3,17 @@ Tarefas a serem realizadas para o projeto de BD:
 O que eu preciso fazer:
 
 1. Finalizar a página de cadastro de cliente (O próprio cliente realizará o cadastro); ✔
-2. Concertar a página de cadastros de veículos (Método de atualização e exclusão); X
 3. Criar uma página de login com verificação de emails de cliente e funcionário; ✔
 4. Adicionar funções especiais para o usuário do tipo "funcionário" (Como visitar as páginas de 
 cadastros de veículos e funcionários); ✔
-5. Criar uma página de listagem dos veículos em cards; X
+5. Criar uma página de listagem dos veículos em cards; ✔
 6. Criar página para visualizar o veículo e um formulário para realizar a locação; X
-7. Criar um método de filtro para a página de listagem de cards; X
+7. Criar um método de filtro para a página de listagem de cards; ✔
 
 
 O que o professor quer:
 
-1. Liste todos os carros disponíveis para aluguel. X
+1. Liste todos os carros disponíveis para aluguel. ✔
 2. Mostre todos os registros da tabela de alugueis. X
 5. Liste os clientes e os carros que eles alugaram. X
 6. Mostre os alugueis, incluindo informações dos carros e clientes. X
