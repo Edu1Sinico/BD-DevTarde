@@ -19,7 +19,7 @@ function loginUser($pdo)
                 $_SESSION['user_id'] = $user['id_cliente'];
                 $_SESSION['user_name'] = $user['nome'];
                 $_SESSION['user_tipo'] = 'cliente'; // Define o tipo de usuário como cliente
-                header("Location: ../"); // Redireciona para a página inicial após o login bem-sucedido
+                header("Location: /src/"); // Redireciona para a página inicial após o login bem-sucedido
                 exit(); // Certifica-se de que o script não continua após o redirecionamento
             }
 
@@ -32,7 +32,7 @@ function loginUser($pdo)
                 $_SESSION['user_id'] = $user['id_funcionario'];
                 $_SESSION['user_name'] = $user['nome'];
                 $_SESSION['user_tipo'] = 'funcionario'; // Define o tipo de usuário como funcionário
-                header("Location: ../"); // Redireciona para a página inicial após o login bem-sucedido
+                header("Location: /src/"); // Redireciona para a página inicial após o login bem-sucedido
                 exit(); // Certifica-se de que o script não continua após o redirecionamento
             }
 

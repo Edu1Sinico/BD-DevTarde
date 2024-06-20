@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="div-cards-section-button">
-                <button>Ver Todos</button>
+                <a href="listCarsPage.php"><button>Ver Todos</button></a>
             </div>
         </div>
 

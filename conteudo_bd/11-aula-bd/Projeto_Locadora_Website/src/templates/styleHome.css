@@ -127,6 +127,10 @@ main {
     margin-bottom: 40px;
 }
 
+.div-cards-section-button a{
+    text-decoration: none;
+}
+
 .div-cards-section-button button{
     display: flex;
     align-items: center;

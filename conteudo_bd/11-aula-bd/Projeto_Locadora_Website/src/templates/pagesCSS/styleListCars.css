@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --font-standart: "Poppins", sans-serif;
+    --standart-color: #FF7676;
+    --standart-gray-color: rgb(221, 221, 221);
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: var(--font-standart);
+    overflow-x: hidden;
+}
+
+.div-header-import {
+    width: 100%;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.div-list-cars-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+    border-bottom: 5px solid var(--standart-gray-color);
+    margin: 15px;
+}
+
+.div-form-register-worker-title h1 {
+    margin: 0px;
+}
+
+.div-filter-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--standart-gray-color);
+    width: 60%;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.div-filter-section .div-filter select {
+    width: 28vh;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+
+.section-list-cars-card {
+    width: 90%;
+    height: 80%;
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* ----- Cards ----- */
+
+.div-card-car {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    width: 25vh;
+    /* border: 2px solid rgb(232, 232, 232); */
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 12px rgb(168, 168, 168);
+    margin: 25px;
+}
+
+.div-card-car .div-car-info {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 100%;
+}
+
+.div-card-car .div-car-info .car-title {
+    display: flex;
+    width: 100%;
+    padding: 0px;
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.div-card-car .div-car-info .car-title h2 {
+    margin: 0px;
+    padding: 10px;
+}
+
+.div-card-car .div-car-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-card-car .div-car-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    background-color: transparent;
+    border-radius: 0px;
+    border: 1px solid black;
+    transition: all 0.3s ease-in-out;
+    font-size: large;
+    cursor: pointer;
+}
+
+.div-car-button button:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+.div-card-car .div-car-info ul li {
+    list-style: none;
+    padding: 0px;
+}

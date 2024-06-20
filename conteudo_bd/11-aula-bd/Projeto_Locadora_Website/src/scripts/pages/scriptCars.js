@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ano: cells[2].innerText,
                 placa: cells[3].innerText,
                 tipo: cells[4].innerText,
-                disponibilidade: cells[5].innerText === 'Disponível' ? '1' : '0',
+                disponibilidade: cells[5].innerText === 'Disponível' ? 'true' : 'false',
             };
 
             // Preenche o formulário com os dados da linha

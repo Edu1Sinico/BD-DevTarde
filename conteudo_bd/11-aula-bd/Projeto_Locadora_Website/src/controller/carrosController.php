@@ -102,3 +102,28 @@ function listarUltimoVeiculo($pdo)
         return 'Erro ao listar o veículo: ' . $e->getMessage();
     }
 }
+
+// Método de filtrar veículos
+function filtrarVeiculos($pdo, $tipo = null, $disponibilidade = null)
+{
+    try {
+        $query = 'SELECT * FROM carro WHERE 1 = 1';
+        $params = [];
+
+        if ($tipo) {
+            $query .= ' AND tipo = :tipo';
+            $params[':tipo'] = $tipo;
+        }
+
+        if ($disponibilidade !== null) {
+            $query .= ' AND disponibilidade = :disponibilidade';
+            $params[':disponibilidade'] = $disponibilidade === 'true' ? 1 : 0;
+        }
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return 'Erro ao filtrar os veículos: ' . $e->getMessage();
+    }
+}

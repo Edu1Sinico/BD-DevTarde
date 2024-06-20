@@ -111,12 +111,3 @@
 .nav-links ul li a:hover::after{
     width: 100%;
 }
-
-.div-user-info{
-    display: flex;
-    align-items: center;
-}
-
-.div-user-info a{
-    text-decoration: none;
-}
